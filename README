@@ -8,7 +8,7 @@ ESP8266 projekts, kas pieslēdzas DSC signalizācijas panelim caur Keybus un nos
 
 Zemāk redzams Home Assistant tastatūras interfeisa piemērs, kas darbojas kopā ar šo integrāciju:
 
-![DSC tastatūras UI](extras/homeassistant/hslovecase.png)
+![DSC tastatūras UI](homeassistant/hslovecase.png)
 
 ---
 
@@ -102,3 +102,4 @@ Projekts izplatīts saskaņā ar GNU GPL v3 licenci.
 Pamats: [taligentx/dscKeybusInterface](https://github.com/taligentx/dscKeybusInterface)
 
 ---
+
