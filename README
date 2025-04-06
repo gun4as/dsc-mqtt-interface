@@ -1,6 +1,14 @@
 # DSC MQTT Interface
 
-ESP8266 projekts, kas pieslēdzas DSC signalizācijas panelim caur Keybus un nosūta statusus uz MQTT brokeri, kā ari saņem komandas no Home Assistant vai citas automatizācijas sistēmas.
+ESP8266 projekts, kas pieslēdzas DSC signalizācijas panelim caur Keybus un nosūta statusus uz MQTT brokeri, kā arī saņem komandas no Home Assistant vai citas automatizācijas sistēmas.
+
+---
+
+## Tastatūras UI piemērs
+
+Zemāk redzams Home Assistant tastatūras interfeisa piemērs, kas darbojas kopā ar šo integrāciju:
+
+![DSC tastatūras UI](extras/homeassistant/hslovecase.png)
 
 ---
 
@@ -17,14 +25,14 @@ ESP8266 projekts, kas pieslēdzas DSC signalizācijas panelim caur Keybus un nos
 
 1. **Klonē repozitoriju**
 
-   Atver VSCode un klonē repozitoriju ar PlatformIO projektu.
+   Atver VSCode un klonē šo repozitoriju kā PlatformIO projektu.
 
-2. **Sagato konfigurācijas failu**
+2. **Sagatavo konfigurācijas failu**
 
-   Fails `src/config_template.cpp` satur paraugvērtības WiFi, MQTT un citiem parametriem.
+   Failā `src/config_template.cpp` ir parauga iestatījumi.
 
-   - Nokopē šo failu uz `src/config.cpp`.
-   - Atver `src/config.cpp` un aizpildi ar saviem uzstādījumiem:
+   - Nokopē šo failu uz `src/config.cpp`
+   - Atver `src/config.cpp` un ievadi savus datus:
 
      ```cpp
      const char * wifiSSID = "Tavs_WiFi";
@@ -36,61 +44,61 @@ ESP8266 projekts, kas pieslēdzas DSC signalizācijas panelim caur Keybus un nos
      const int mqttPort = 1883;
      ```
 
-   **Svarīgi:** Fails `config.cpp` ir ignorēts `.gitignore` un netiks iekļauts repozitorijā.
+   📌 **Fails `config.cpp` ir iekļauts `.gitignore` — tas netiks augšupielādēts uz GitHub.**
 
 3. **Kompilē un augšupielādē uz ESP8266**
 
-   Atver PlatformIO un nospied **Upload** (bultiņas ikona) vai lieto PlatformIO komandu:
+   PlatformIO iekš VSCode:
+   - Spied **Upload** vai izmanto PlatformIO komandu logu:
 
-   ```bash
-   platformio run
-   platformio upload
-   ```
+     ```bash
+     platformio run
+     platformio upload
+     ```
 
-4. **Atver seriālo monitoru** un pārliecinies, ka ierīce pieslēdzas WiFi un MQTT.
+4. **Pārbaudi seriālajā monitorā**, vai ierīce pieslēdzas WiFi un MQTT.
 
 ---
 
-## MQTT Topiki (saņem/šāna)
+## MQTT Topiki (nosūtīšana / saņemšana)
 
 | Tēma | Apraksts |
-|-------|----------|
+|------|----------|
 | `DSC/Get/Zone1 ... Zone64` | Zonēm individuāli |
-| `DSC/Get/Partition1 ...` | Partition statusi |
-| `DSC/Get/Trouble` | Traucējumu ziņojumi |
-| `DSC/Set/Partition1` | Komandas: arm, disarm u.c. |
-
----
-
-## Iespējamās problēmas
-
-- Ja WiFi nepieejams, ierīce mēģina atkārtoti pieslēgties.
-- Ja MQTT brokeris nepieejams, tas mēģina automātiski pārslēgties.
-- Pēc vairākiem neveiksmīgiem mēģinājumiem ESP automātiski restartējas.
+| `DSC/Get/Partition1 ...`   | Partition statusi |
+| `DSC/Get/Trouble`          | Traucējumu ziņojumi |
+| `DSC/Get/Fire1`, ...       | Ugunsdrošības statuss |
+| `DSC/Set/Partition1`       | Komandas: arm, disarm u.c. |
 
 ---
 
 ## Drošība
 
-Fails `config.cpp` satur sensitīvus datus (WiFi, MQTT paroles), tāpēc tas **netiek augšupielādēts** repozitorijā.
-Neesi to koplietot publiski!
+⚠️ **Fails `config.cpp` satur sensitīvu informāciju!**
+Tas netiek saglabāts repozitorijā (`.gitignore`) un ir jāuztur lokāli.
+
+---
+
+## Iespējamās problēmas
+
+- Ja WiFi nav pieejams, ierīce mēģina atkārtoti pieslēgties.
+- Ja MQTT brokeris nav pieejams, tiek mēģināta atkārtota pieslēgšanās.
+- Pēc daudziem neveiksmīgiem mēģinājumiem ESP automātiski restartējas.
 
 ---
 
 ## Plānotie uzlabojumi
 
-- Web konfigurācijas saskarne (hotspot + WiFi/MQTT setup)
+- Web konfigurācijas saskarne (hotspot + iestatījumi)
 - OTA atjaunināšana
-- Logs un sistēmas diagnostika caur MQTT
+- Sistēmas diagnostika caur MQTT
 
 ---
 
 ## Licence
 
-Projekts tiek izplatīts saskaņā ar GNU GPL v3 licenci.
+Projekts izplatīts saskaņā ar GNU GPL v3 licenci.
 
-<https://github.com/taligentx/dscKeybusInterface>
+Pamats: [taligentx/dscKeybusInterface](https://github.com/taligentx/dscKeybusInterface)
 
 ---
-
-
