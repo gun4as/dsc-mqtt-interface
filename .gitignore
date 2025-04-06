@@ -1,0 +1,25 @@
+# PlatformIO
+.pio/
+.vscode/
+.build/
+lib_deps/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Backup & logs
+*.bak
+*.old
+*.log
+
+# Compiled
+*.elf
+*.bin
+*.map
+
+# Arduino/ESP specifiski
+*.pyc
+*.swp
+
+config.cpp
