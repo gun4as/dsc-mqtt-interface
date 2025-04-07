@@ -18,7 +18,6 @@
 WiFiClient wifiClient;
 PubSubClient mqtt(mqttServer, mqttPort, wifiClient);
 unsigned long mqttPreviousTime;
-
 DSCkeybushome *DSCkeybus = nullptr;
 
 

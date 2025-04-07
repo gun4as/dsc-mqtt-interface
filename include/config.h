@@ -1,8 +1,11 @@
 #ifndef config_h
 #define config_h
 
-extern const char * wifiSSID;
-extern const char * wifiPassword;
+
+extern const char * apSSID;
+extern const char * apPassword;
+extern const int apTimeoutSeconds;
+
 extern const char * accessCode;
 extern const char * otaAccessCode;
 extern const char * mqttServer;
