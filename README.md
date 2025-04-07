@@ -29,7 +29,7 @@ Zemāk redzams Home Assistant tastatūras interfeisa piemērs, kas darbojas kop�
 
 2. **Sagatavo konfigurācijas failu**
 
-   Failā `src/config_template.cpp` ir parauga iestatījumi.
+   Failā `src/config_template.txt` ir parauga iestatījumi.
 
    - Nokopē šo failu uz `src/config.cpp`
    - Atver `src/config.cpp` un ievadi savus datus:
