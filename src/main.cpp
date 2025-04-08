@@ -12,8 +12,9 @@
 #include "globals.h"
 #include "wifi_utils.h"
 #include "dsc_utils.h"
-
-
+#include "mqtt_config.h"
+#include <LittleFS.h>
+#include "web_server.h"
 
 WiFiClient wifiClient;
 PubSubClient mqtt(mqttServer, mqttPort, wifiClient);
@@ -25,10 +26,12 @@ void setup() {
   Serial.setDebugOutput(true);
   Serial.begin(115200);
   Serial.println(); 
+  LittleFS.begin();
   connectToWiFi();
   setupMqtt();
   setupDSC();
   Serial.println(F("DSC Interface is online."));
+  setupWebServer();
 }
 
 void loop() {

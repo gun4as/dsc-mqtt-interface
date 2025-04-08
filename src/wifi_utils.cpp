@@ -6,7 +6,7 @@
 void connectToWiFi() {
     WiFiManager wm;
     // Ja gribi testēt un piespiedu kārtā vienmēr palaist hotspotu:
-  // wm.resetSettings();
+   // wm.resetSettings();
     
     wm.setConfigPortalTimeout(apTimeoutSeconds);
 
