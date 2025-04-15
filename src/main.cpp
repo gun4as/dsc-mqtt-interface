@@ -15,6 +15,7 @@
 #include "mqtt_config.h"
 #include <LittleFS.h>
 #include "web_server.h"
+#include "led_utils.h"
 
 WiFiClient wifiClient;
 PubSubClient mqtt(mqttServer, mqttPort, wifiClient);
@@ -32,9 +33,11 @@ void setup() {
   setupDSC();
   Serial.println(F("DSC Interface is online."));
   setupWebServer();
+  setLedStatus(LED_OK);
 }
 
 void loop() {
+  updateLed();
   static int loopCount = 0;
   static unsigned long delayedStartupTime = millis();
   static bool delayedStartup = true;

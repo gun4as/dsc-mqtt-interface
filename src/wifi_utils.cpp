@@ -2,6 +2,7 @@
 #include <ESP8266WiFi.h>
 #include <WiFiManager.h> // https://github.com/tzapu/WiFiManager
 #include "config.h"
+#include "led_utils.h"
 
 void connectToWiFi() {
     WiFiManager wm;
@@ -17,6 +18,7 @@ void connectToWiFi() {
         Serial.println(WiFi.softAPIP());
         Serial.print(F("Connect to WiFi SSID: "));
         Serial.println(wm->getConfigPortalSSID());
+        setLedStatus(LED_WIFI_DISCONNECTED);
     });
 
     // autoConnect mēģina pieslēgties esošam WiFi. Ja neizdodas, atver hotspotu

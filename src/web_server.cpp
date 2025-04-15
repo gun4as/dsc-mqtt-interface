@@ -50,7 +50,7 @@ void setupWebServer() {
     config.debug        = doc["debug"] | 0;
     config.expander1    = doc["expander1"] | 0;
     config.expander2    = doc["expander2"] | 0;
-    config.zones        = doc["zones"] | 16;
+    config.zones        = doc["zones"] | 24;
     config.relays       = doc["relays"] | 4;
 
     if (saveConfig()) {
