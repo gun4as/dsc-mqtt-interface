@@ -13,60 +13,59 @@ extern dscKeybusInterface dsc;
 extern bool forceDisconnect;
 
 void disconnectKeybus();
-
-const char mm0[] PROGMEM = "Nospiediet #: lai izietu";
-const char mm1[] PROGMEM = "Zonu apiešana";
-const char mm2[] PROGMEM = "Sistēmas problēmas";
-const char mm3[] PROGMEM = "Signalizācijas atmiņa";
-const char mm4[] PROGMEM = "Durvju zvaniņš";
-const char mm5[] PROGMEM = "Piekļuves kodi";
-const char mm6[] PROGMEM = "Lietotāja funkcijas";
-const char mm7[] PROGMEM = "Izvades kontakts";
+const char mm0[] PROGMEM = "Press # to exit";
+const char mm1[] PROGMEM = "Zone Bypass";
+const char mm2[] PROGMEM = "System Troubles";
+const char mm3[] PROGMEM = "Alarm Memory";
+const char mm4[] PROGMEM = "Door Chime";
+const char mm5[] PROGMEM = "Access Codes";
+const char mm6[] PROGMEM = "User Functions";
+const char mm7[] PROGMEM = "Output Contact";
 const char mm8[] PROGMEM = " ";
-const char mm9[] PROGMEM = "Bez ieejas aizsardzība";
-const char mm10[] PROGMEM = "Ātrā aizsardzība";
+const char mm9[] PROGMEM = "No-Entry Arm";
+const char mm10[] PROGMEM = "Quick Arming";
 
-const char om0[] PROGMEM = "Nospiediet #: lai izietu";
-const char om1[] PROGMEM = "Izvade 1";
-const char om2[] PROGMEM = "Izvade 2";
+const char om0[] PROGMEM = "Press # to exit";
+const char om1[] PROGMEM = "O/P 1";
+const char om2[] PROGMEM = "O/P 2";
 
-const char tm0[] PROGMEM = "Nospiediet #: lai izietu";
-const char tm1[] PROGMEM = "Nepieciešams serviss *";
-const char tm2[] PROGMEM = "AC barošanas traucējumi";
-const char tm3[] PROGMEM = "Tālruņa līnijas problēma";
-const char tm4[] PROGMEM = "Saziņas kļūda";
-const char tm5[] PROGMEM = "Zonas kļūda *";
-const char tm6[] PROGMEM = "Zonas sabojāšana *";
-const char tm7[] PROGMEM = "Zema baterija *";
-const char tm8[] PROGMEM = "Sistēmas laiks";
+const char tm0[] PROGMEM = "Press # to exit";
+const char tm1[] PROGMEM = "Service Required *";
+const char tm2[] PROGMEM = "AC Failure";
+const char tm3[] PROGMEM = "Tel Line Trouble";
+const char tm4[] PROGMEM = "Comm Failure";
+const char tm5[] PROGMEM = "Zone Fault *";
+const char tm6[] PROGMEM = "Zone Tamper *";
+const char tm7[] PROGMEM = "Low Battery *";
+const char tm8[] PROGMEM = "System Time";
 
-const char sm0[] PROGMEM = "Nospiediet #: lai izietu";
-const char sm1[] PROGMEM = "Zema baterija";
-const char sm2[] PROGMEM = "Zvanu ķēdes kļūda";
-const char sm3[] PROGMEM = "Sistēmas problēma";
-const char sm4[] PROGMEM = "Sistēmas sabojāšana";
-const char sm5[] PROGMEM = "Moduļa uzraudzība";
-const char sm6[] PROGMEM = "RF traucējumi atklāti";
-const char sm7[] PROGMEM = "PC5204 zema baterija";
-const char sm8[] PROGMEM = "PC5204 AC kļūme";
+const char sm0[] PROGMEM = "Press # to exit";
+const char sm1[] PROGMEM = "Low Battery";
+const char sm2[] PROGMEM = "Bell Circuit";
+const char sm3[] PROGMEM = "System Trouble";
+const char sm4[] PROGMEM = "System Tamper";
+const char sm5[] PROGMEM = "Mod Supervision";
+const char sm6[] PROGMEM = "RF Jam detected";
+const char sm7[] PROGMEM = "PC5204 Low Battery";
+const char sm8[] PROGMEM = "PC5204 AC Fail";
 
-const char um0[] PROGMEM = "Nospiediet #: lai izietu";
-const char um1[] PROGMEM = "Laiks un datums";
-const char um2[] PROGMEM = "Auto aizsardzība/atbruņošana";
-const char um3[] PROGMEM = "Auto aizsardzības laiks";
-const char um4[] PROGMEM = "Sistēmas tests";
-const char um5[] PROGMEM = "Serviss/DLS režīms";
-const char um6[] PROGMEM = "Notikumu žurnāls";
+const char um0[] PROGMEM = "Press # to exit";
+const char um1[] PROGMEM = "Time and Date";
+const char um2[] PROGMEM = "Auto Arm/Disarm";
+const char um3[] PROGMEM = "Auto Arm Time";
+const char um4[] PROGMEM = "System Test";
+const char um5[] PROGMEM = "System Serv/DLS";
+const char um6[] PROGMEM = "Event Buffer";
 
 const char am0[] PROGMEM = " ";
 const char am1[] PROGMEM = " ";
-const char am2[] PROGMEM = "Sistēmas kļūme:(*2) skatīt";
-const char am3[] PROGMEM = "Apiešana aktīva:(*1) skatīt";
-const char am4[] PROGMEM = "Signalizācijas atmiņa:(*3) skatīt";
-const char am5[] PROGMEM = "Atvērtas zonas: Ritiniet, lai skatītu <>";
+const char am2[] PROGMEM = "System Trouble:(*2) to view";
+const char am3[] PROGMEM = "Bypass Active:(*1) to view";
+const char am4[] PROGMEM = "Alarm Memory: (*3) to view";
+const char am5[] PROGMEM = "Open Zones:Scroll to view <>";
 
-const char ml0[] PROGMEM = "Sistēma ir gatava: Gatava aizsardzībai <>";
-const char ml1[] PROGMEM = "Drošiniet sistēmu: Pirms aizsardzības <>";
+const char ml0[] PROGMEM = "System is Ready:Ready to Arm <>";
+const char ml1[] PROGMEM = "Secure System:Before Arming <>";
 
 const char STATUS_PENDING[] PROGMEM = "pending";
 const char STATUS_ARM[] PROGMEM = "armed_away";
@@ -147,6 +146,9 @@ const char *
     ml0,
     ml1
   };
+
+
+
 enum panelStatus {
   acStatus,
   batStatus,
@@ -158,11 +160,13 @@ enum panelStatus {
   chimeStatus
 };
 
+
 class DSCkeybushome { 
   public: DSCkeybushome(byte dscClockPin = 0, byte dscReadPin = 0, byte dscWritePin = 0): dscClockPin(dscClockPin),
   dscReadPin(dscReadPin),
-  dscWritePin(dscWritePin) {  
+  dscWritePin(dscWritePin) {
   }
+
   std:: function < void(uint8_t, bool) > zoneStatusChangeCallback;
   std:: function < void(std::string ) > systemStatusChangeCallback;
   std:: function < void(panelStatus, bool, int) > panelStatusChangeCallback;
@@ -222,6 +226,25 @@ class DSCkeybushome {
     beepsCallback = callback;
   }
   
+
+  void set_panel_time() {
+#if defined(USE_TIME)      
+    ESPTime rtc = now();
+    if (!rtc.is_valid()) return;
+    ESP_LOGI("info","Setting panel time...");    
+    dsc.setDateTime(rtc.year, rtc.month, rtc.day_of_month, rtc.hour, rtc.minute);
+#endif       
+  }
+
+
+  void set_panel_time_manual(int year,int month,int day,int hour,int minute) {
+      #if defined(ARDUINO_MQTT)
+          Serial.printf("Setting panel time...\n");       
+    #else
+        ESP_LOGI("info","Setting panel time..."); 
+    #endif
+    dsc.setDateTime(year, month, day, hour, minute);
+  } 
   void set_accessCode(const char * ac) { accessCode=ac; }
   void set_maxZones(int mz) {maxZones=mz;}
   void set_userCodes(const char * uc) { userCodes=uc;}
@@ -233,6 +256,8 @@ class DSCkeybushome {
   unsigned long cmdWaitTime;
   bool extendedBufferFlag=false;
   bool troubleFetch=false;
+
+
 
   private: 
   
@@ -289,8 +314,13 @@ class DSCkeybushome {
     byte alarm:1;
     byte enabled:1;
     byte bypassed:1;
-  };
+   
 
+  };
+  #if defined(ESPHOME_MQTT)
+ // mqtt::MQTTClientComponent *mqttId;
+  #endif
+  
   public:
   zoneType * zoneStatus;
   partitionType partitionStatus[dscPartitions];
@@ -311,19 +341,32 @@ class DSCkeybushome {
   byte beeps,
   previousBeeps;
   bool refresh;
- 
+  #if defined(ESPHOME_MQTT)
+  std::string topic,topic_prefix;
+  #endif
+  
+#if defined(ARDUINO_MQTT)
 public:
 void begin() {
-    
+#else
+  void setup() override {
+#endif      
     eventStatusMsg.reserve(64);
+    
     zoneStatus = new zoneType[maxZones];
     
     if (debug > 2)
       Serial.begin(115200);
+#if !defined(ARDUINO_MQTT)     
+    set_update_interval(16);
+#endif
+
+
     firstrun = true;
     systemStatusChangeCallback(String(FPSTR(STATUS_OFFLINE)).c_str());
     forceDisconnect = false;
     #ifdef MODULESUPERVISION
+    dsc.enableModuleSupervision = 1;
     #endif
 #if not defined(DISABLE_EXPANDER)      
     dsc.addModule(expanderAddr1);
@@ -332,10 +375,12 @@ void begin() {
     dsc.maxZones = maxZones;
     dsc.resetStatus();
     dsc.processModuleData = true;
+
     if (dscClockPin && dscReadPin && dscWritePin)
       dsc.begin(Serial, dscClockPin, dscReadPin, dscWritePin);
     else
       dsc.begin(Serial);
+
     for (int x = 0; x < maxZones; x++) {
       zoneStatus[x].tamper = false;
       zoneStatus[x].batteryLow = false;
@@ -350,7 +395,7 @@ void begin() {
         partitionStatus[p].digits=0;
         beepsCallback("0", p+1);    
         partitionMsgChangeCallback("",p+1);
-        line1DisplayCallback("ESP Modulis Startējas", p+1);    
+        line1DisplayCallback("ESP Module Start", p+1);    
         line2DisplayCallback("", p+1);
     }
     for (int x=0;x<dscZones;x++)
@@ -359,19 +404,22 @@ void begin() {
     system1 = 0;
     system0 = 0;
     troubleMsgStatusCallback("");
-    eventInfoCallback("ESP modulis startējas");  
+    eventInfoCallback("ESP module start");  
     zoneMsgStatusCallback("");
   }
  private: 
 
-std::string getZoneName(int zone) {
+ std::string getZoneName(int zone) {
   std::string name;
   // ... (oriģinālā koda loģika, kas aizpilda 'name')
   return name;
 }
 
+
+ 
   std::string getUserName(char * code) {
-  std::string name = code;  
+  std::string name = code;
+  
   if (userCodes  && *userCodes) {
     std::string s=userCodes;
     std::string token1, token2, token3;
@@ -397,50 +445,71 @@ public:
       defaultPartition = partition;
       dsc.currentDefaultPartition = partition;
     }
+
   }
 
-void set_zone_fault(int zone, bool fault) {
+  void set_zone_fault(int zone, bool fault) {
 #if not defined(DISABLE_EXPANDER) 
-    Serial.printf("Setting Zone Fault: %d,%d\n", zone, fault);
-    dsc.setZoneFault(zone, fault);    
+ #if !defined(ARDUINO_MQTT)     
+    ESP_LOGI("Debug", "Setting Zone Fault: %d,%d", zone, fault);
+ #else
+      Serial.printf("Setting Zone Fault: %d,%d\n", zone, fault);
+ #endif
+    dsc.setZoneFault(zone, fault);
+    
 #endif
   }
 
-  void alarm_disarm(std::string code) {   
+  void alarm_disarm(std::string code) {
+      
     set_alarm_state("D", code, defaultPartition);
+
   }
 
   void alarm_arm_home() {
+
     set_alarm_state("S", "", defaultPartition);
+
   }
 
   void alarm_arm_night(std::string code) {
+
     set_alarm_state("N", code, defaultPartition);
+
   }
 
   void alarm_arm_away() {
+
     set_alarm_state("A", "", defaultPartition);
+
   }
 
   void alarm_trigger_fire() {
+
     set_alarm_state("F", "", defaultPartition);
+
   }
 
   void alarm_trigger_panic() {
+
     set_alarm_state("P", "", defaultPartition);
+
   }
 
 private:
   void processMenu(byte key, byte partition = -1) {
+
     if (partition < 1) partition = defaultPartition;
     byte * currentSelection = & partitionStatus[partition - 1].currentSelection;
+
     if (partitionStatus[partition - 1].locked) {
-      line1DisplayCallback(String(F("Sistēma")).c_str(), partition);
-      line2DisplayCallback(String(F("nav piejama")).c_str(), partition);
+      line1DisplayCallback(String(F("System")).c_str(), partition);
+      line2DisplayCallback(String(F("not available")).c_str(), partition);
       return;
     }
 
     if (partitionStatus[partition - 1].digits > 0) { //program mode data input 
+
       String tpl=F("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
       if (dsc.status[partition - 1] == 0xAA) { //time entry
         tpl = F("XXXX    XXXXXX  XXXXXXXXXXXXXXXX");
@@ -448,6 +517,7 @@ private:
       if (dsc.status[partition - 1] == 0xAB) { //time entry
         tpl = F("XXXX                            ");
       }      
+
       if (key == '#') {
         partitionStatus[partition - 1].newData = false;
         if (key == '#' && partitionStatus[partition - 1].hex) {
@@ -459,13 +529,16 @@ private:
 
       } else if (key == '>') {
         getNextIdx(tpl.c_str(), partition);
+
         if (!partitionStatus[partition - 1].hex && partitionStatus[partition - 1].editIdx == 0) {
           dsc.setLCDSend(partition);
           partitionStatus[partition - 1].newData = false;
           return;
         }
+
       } else if (key == '<') {
         getPrevIdx(tpl.c_str(), partition);
+
       } else if (key != '*') {
         if (partitionStatus[partition - 1].decimalInput) {
           int num;
@@ -483,6 +556,7 @@ private:
             else
               return;
           }
+          
           if (partitionStatus[partition - 1].editIdx % 2)
             dsc.pgmBuffer.data[y] = (dsc.pgmBuffer.data[y] & 0xF0) | k;
           else
@@ -507,6 +581,7 @@ private:
       setStatus(partition - 1, true);
       return;
     }
+
     if (key == '#') {
       * currentSelection = 0xFF;
       partitionStatus[partition - 1].selectedZone = 0;
@@ -516,10 +591,12 @@ private:
       setStatus(partition - 1, true);
       return;
     }
+
     if (dsc.status[partition - 1] < 0x04) {
       if (dsc.keybusVersion1) { //older versions don't support top level navigation 
         if (key == '<' || key == '>') return;
       } else {
+
         if (key == '<') {
           getPreviousMainOption(partition);
         } else
@@ -529,6 +606,7 @@ private:
       }
       dsc.write(key, partition);
       setStatus(partition - 1, true);
+
     } else if (dsc.status[partition - 1] == 0x9E) { // * mainmenu
       if (key == '<') {
         * currentSelection = * currentSelection >= 11 ? 10 : ( * currentSelection > 0 ? * currentSelection - 1 : 10);
@@ -589,6 +667,7 @@ private:
         * currentSelection = 0xFF;
         dsc.write(key, partition);
       }
+
     } else if (dsc.status[partition - 1] == 0xA9 && !partitionStatus[partition - 1].eventViewer) { // * user functions
       if (key == '<') {
         * currentSelection = * currentSelection >= 7 ? 6 : ( * currentSelection > 0 ? * currentSelection - 1 : 6);
@@ -697,6 +776,7 @@ private:
       dsc.write(key, partition);
       setStatus(partition - 1, false);
     }
+
   }
 
   void getPrevIdx(const char * tpl, byte partition) {
@@ -706,6 +786,7 @@ private:
       count++;
      //  byte b = (partitionStatus[partition - 1].editIdx / 2) + (partitionStatus[partition - 1].editIdx % 2);  
     } while (tpl[partitionStatus[partition - 1].editIdx] != 'X' && count <= partitionStatus[partition - 1].digits);
+
   }
 
   void getNextIdx(const char * tpl, byte partition) {
@@ -715,6 +796,7 @@ private:
       count++;
        //byte b = (partitionStatus[partition - 1].editIdx / 2) + (partitionStatus[partition - 1].editIdx % 2);  
     } while (tpl[partitionStatus[partition - 1].editIdx] != 'X' && count <= partitionStatus[partition - 1].digits);
+
   }
 
 public:
@@ -724,9 +806,15 @@ public:
 
   void alarm_keypress_partition(std::string keystring, int partition) {
     if (!partition) partition = defaultPartition;
-    if (debug > 0) Serial.printf("Writing keys: %s to partition %d, partition disabled: %d , partition locked: %d\n", keystring.c_str(), partition,dsc.disabled[partition - 1],partitionStatus[partition-1].locked);  
+#if !defined(ARDUINO_MQTT)         
+    if (debug > 0) ESP_LOGI("Debug", "Writing keys: %s to partition %d, partition disabled: %d , partition locked: %d", keystring.c_str(), partition,dsc.disabled[partition - 1],partitionStatus[partition-1].locked);
+    #else
+          if (debug > 0) Serial.printf("Writing keys: %s to partition %d, partition disabled: %d , partition locked: %d\n", keystring.c_str(), partition,dsc.disabled[partition - 1],partitionStatus[partition-1].locked);  
+#endif
     if (dsc.disabled[partition - 1]) return;
-    const char * keys = strcpy(new char[keystring.length() + 1], keystring.c_str()); 
+
+    const char * keys = strcpy(new char[keystring.length() + 1], keystring.c_str());
+    
     partitionStatus[partition - 1].keyPressTime = millis();
     if (keystring.length() == 1) {
       processMenu(keys[0], partition);
@@ -735,6 +823,41 @@ public:
     }
   }
 private:
+#if defined(ESPHOME_MQTT) 
+static void on_json_message(const std::string &topic, JsonObject payload) {
+    int p=0;
+      DSCkeybushome * d=static_cast<DSCkeybushome*>(dscPtr);
+      if (topic.find(String(FPSTR(setalarmcommandtopic)).c_str())!=std::string::npos) { 
+        if (payload.containsKey("partition"))
+          p=payload["partition"];
+      
+        if (payload.containsKey("state") )  {
+            const char *c="";             
+            if (payload.containsKey("code"))
+                c=payload["code"];
+            std::string code=c;
+            std::string s=payload["state"];  
+            d->set_alarm_state(s,code,p); 
+        } else if (payload.containsKey("keys")) {
+            std::string s=payload["keys"]; 
+            d->alarm_keypress_partition(s,p);
+        } else if (payload.containsKey("fault") && payload.containsKey("zone")) {
+            bool b=false;
+            std::string s1= (const char*) payload["fault"];
+            if (s1=="ON" || s1=="on" || s1=="1")
+                b=true;
+            std::string s=payload["zone"];
+            p = atoi(s.c_str());
+           // ESP_LOGI("info","set zone fault %s,%s,%d,%d",s2.c_str(),c,b,p);            
+            d->set_zone_fault(p,b);
+
+        }
+        
+      } 
+      
+  }
+
+#endif
 
   bool isInt(std::string s, int base) {
     if (s.empty() || std::isspace(s[0])) return false;
@@ -744,24 +867,43 @@ private:
   }
 public:
   void set_alarm_state(std::string state, std::string code = "", int partition = 0) {
+
     if (code.length() != 4 || !isInt(code, 10)) code = ""; // ensure we get a numeric 4 digit code
     const char * alarmCode = strcpy(new char[code.length() + 1], code.c_str());
     if (!partition) partition = defaultPartition;
+
+#if !defined(ARDUINO_MQTT)  
+    ESP_LOGI("debug","Setting Alarm state: %s to partition %d",state.c_str(),partition);
+#else
     Serial.printf("Setting Alarm state: %s to partition %d\n",state.c_str(),partition);    
-    if (partitionStatus[partition - 1].locked) return;    
+#endif
+    if (partitionStatus[partition - 1].locked) return;
+ 
+        
+
     // Arm stay
-    if (state.compare("S") == 0 && !dsc.armed[partition - 1] && !dsc.exitDelay[partition - 1]) {      
+    if (state.compare("S") == 0 && !dsc.armed[partition - 1] && !dsc.exitDelay[partition - 1]) {
+#if !defined(ARDUINO_MQTT)          
+         if (debug > 1) ESP_LOGI("debug","Arming stay");   
+#endif         
       dsc.write('s', partition); // Virtual keypad arm stay
     }
     // Arm away
-    else if ((state.compare("A") == 0 || state.compare("W") == 0) && !dsc.armed[partition - 1] && !dsc.exitDelay[partition - 1]) {    
+    else if ((state.compare("A") == 0 || state.compare("W") == 0) && !dsc.armed[partition - 1] && !dsc.exitDelay[partition - 1]) {
+#if !defined(ARDUINO_MQTT)          
+     if (debug > 1) ESP_LOGI("debug","Arming away");  
+#endif     
       dsc.write('w', partition); // Virtual keypad arm away
     }
     // Arm night  ** this depends on the accessCode setup in the yaml
     else if (state.compare("N") == 0 && !dsc.armed[partition - 1] && !dsc.exitDelay[partition - 1]) {
+#if !defined(ARDUINO_MQTT)          
+       if (debug > 1) ESP_LOGI("debug","Arming night");  
+#endif
       //ensure you have the accessCode setup correctly in the yaml for this to work
       dsc.write('n', partition); // Virtual keypad arm away
       if (code.length() == 4 && !isInt(accessCode, 10)) { // if the code is sent and the yaml code is not active use this.
+
         dsc.write(alarmCode, partition);
       }
     }
@@ -775,7 +917,10 @@ public:
     }
     // Disarm
     else if (state.compare("D") == 0 && (dsc.armed[partition-1] || dsc.exitDelay[partition-1])) {
-      if (code.length() == 4) { // ensure we get 4 digit code    
+      if (code.length() == 4) { // ensure we get 4 digit code
+#if !defined(ARDUINO_MQTT)        
+      if (debug > 1) ESP_LOGI("debug","Disarming ... ");  
+#endif      
         dsc.write(alarmCode, partition);
       }
     }
@@ -793,11 +938,17 @@ private:
       x+=3;
     }
     s[x]=0;
+    #if !defined(ARDUINO_MQTT)
+    if (debug > 0)
+        ESP_LOGI(label, "%02X: %s", cmd, s);
+    #else
     if (debug > 0)
         Serial.printf("%s %02X: %s\n",label, cmd, s); 
+    #endif
   }
 
   byte getPanelBitNumber(byte panelByte, byte startNumber) {
+
     byte bitCount = 0;
     byte p=defaultPartition;
     for (byte bit = 0; bit <= 7; bit++) {
@@ -869,6 +1020,8 @@ private:
         }
       }
     }
+    ESP_LOGI("info"," in get options %s",options.c_str());
+    //Serial.printf("in get options %s\n",options.c_str());
     return options.c_str();
   }
 
@@ -882,6 +1035,7 @@ private:
           r=true;
           break;
         }
+
       }
     }
     return r;
@@ -949,7 +1103,9 @@ private:
       if (partitionStatus[partition - 1].selectedZone) return;
     } else if (partitionStatus[partition - 1].currentSelection < 2)
       partitionStatus[partition - 1].currentSelection = 6;
+
     for (int x = partitionStatus[partition - 1].currentSelection; x >= 0; x--) {
+
       if ((x == 6) && !dsc.armed[partition - 1] && !dsc.armed[partition - 1]) { //openzones
         menu = 5;
         zone = 0;
@@ -970,6 +1126,7 @@ private:
     }
     partitionStatus[partition - 1].currentSelection = menu;
     partitionStatus[partition - 1].selectedZone = zone;
+
   }
 
   void clearZoneAlarms(byte partition) {
@@ -1023,6 +1180,7 @@ private:
       partitionStatus[partition - 1].selectedZone = getNextOpenZone(partitionStatus[partition - 1].selectedZone, partition);
       if (partitionStatus[partition - 1].selectedZone) return;
     }
+
     for (int x = partitionStatus[partition - 1].currentSelection; x < 6; x++) {
       if ((x == 0 || x == 1) && dsc.lights[partition - 1] & 0x10) { //trouble
         menu = 2;
@@ -1044,6 +1202,7 @@ private:
     }
     partitionStatus[partition - 1].currentSelection = menu;
     partitionStatus[partition - 1].selectedZone = zone;
+
   }
 
   byte getNextEnabledZone(byte start, byte partition) {
@@ -1108,11 +1267,25 @@ private:
       }
     }
   }
-
+#if defined(ARDUINO_MQTT)
   public:
   void loop()  {
+#else   
+void update() override {
+#endif     
 
     if (forceDisconnect) return;
+
+#if defined(ESPHOME_MQTT)
+   static bool firstrunmqtt=true;
+   if (mqtt::global_mqtt_client->is_connected() && firstrunmqtt)	{
+         mqtt::global_mqtt_client->publish(topic,"{\"name\":\"command\", \"cmd_t\":\"" +  topic_prefix + String(FPSTR(setalarmcommandtopic)).c_str() + "\"}",0,1);
+         firstrunmqtt=false;
+       }
+#endif      
+
+
+    
     if ((millis() - beepTime > 2000 && beeps > 0)) {
       beeps = 0;
       for (byte partition = 1; partition <= dscPartitions; partition++) {
@@ -1120,13 +1293,23 @@ private:
         beepsCallback("0", partition);
       }
       beepTime = millis();
-    }
 
+    }
+    /*
+    if (millis() - eventTime > 30000) {
+      eventInfoCallback("");
+      eventTime = millis();
+    }
+    */
+ 
     static unsigned long refreshTime;
     if (!firstrun && millis() - refreshTime > 60000 ) {
               refreshTime=millis();
-              forceRefresh=true;         
+              forceRefresh=true;
+             
     }
+
+
     if ( (dsc.loop() || forceRefresh) && dsc.panelData[0] ) { //Processes data only when a valid Keybus command has been read
  
       static bool delayedStart = true;
@@ -1137,22 +1320,41 @@ private:
           partitionStatus[defaultPartition-1].keyPressTime = millis();
           dsc.write("*21#7##", defaultPartition); //fetch panel troubles /zone module low battery
         }
+
+#if not defined(DISABLE_EXPANDER)          
+       // dsc.clearZoneRanges(); // start with clear expanded zones
+#endif
       }
 
-      if (debug > 1) {
+      if (debug > 1)
         printPacket("Paneldata: ", dsc.panelData[0], dsc.panelData, 16);
-        processStatus();
+      #ifdef SERIALDEBUGCOMMANDS
+      if (debug > 2) {
+        Serial.print(" ");
+        dsc.printPanelBinary(); // Optionally prints without spaces: printPanelBinary(false);
+        Serial.print(" [");
+        dsc.printPanelCommand(); // Prints the panel command as hex
+        Serial.print("] ");
+        dsc.printPanelMessage(); // Prints the decoded message
+        Serial.println();
       }
+      #endif
+
+      processStatus();
       for (byte partition = 0; partition < dscPartitions; partition++) {
         if (dsc.disabled[partition] || dsc.status[partition] != 0xA0) continue;
         getBypassZones(partition);
         setStatus(partition, true);
       }
+
     }
+
     if (!forceDisconnect && ( dsc.statusChanged || forceRefresh) && dsc.panelData[0]) { // Processes data only when a valid Keybus command has been read and statuses were changed
       dsc.statusChanged = false; // Reset the status tracking flag
+
       if (debug  > 0)
         printPacket("Paneldata: ", dsc.panelData[0], dsc.panelData, 16);
+
       for (byte partition = 0; partition < dscPartitions; partition++) {
         if (firstrun) {
           beepsCallback("0", partition + 1);
@@ -1162,9 +1364,15 @@ private:
         }
         if (dsc.disabled[partition]) continue;
         setStatus(partition, forceRefresh || dsc.status[partition]==0xEE || dsc.status[partition]==0xA0);
+
       }
-      if (dsc.bufferOverflow) Serial.printf( "Keybus buffer overflow\n");
+#if !defined(ARDUINO_MQTT)     
+      if (dsc.bufferOverflow) ESP_LOGI("Error", "Keybus buffer overflow");
+      #else
+                if (dsc.bufferOverflow) Serial.printf( "Keybus buffer overflow\n");
+#endif      
       dsc.bufferOverflow = false;
+
       // Checks if the interface is connected to the Keybus
       if (dsc.keybusChanged || forceRefresh ) {
         dsc.keybusChanged = false; // Resets the Keybus data status flag
@@ -1172,6 +1380,7 @@ private:
           systemStatusChangeCallback( String(FPSTR(STATUS_ONLINE)).c_str());
         } else systemStatusChangeCallback( String(FPSTR(STATUS_OFFLINE)).c_str());
       }
+
       if (dsc.powerChanged || forceRefresh ) {
         dsc.powerChanged = false;
         if (dsc.powerTrouble) {
@@ -1180,6 +1389,7 @@ private:
             panelStatusChangeCallback(acStatus, true, 0);
         }
       }
+
       if (dsc.batteryChanged || forceRefresh ) {
         dsc.batteryChanged = false;
         if (dsc.batteryTrouble) {
@@ -1188,38 +1398,57 @@ private:
             panelStatusChangeCallback(batStatus, false, 0);
         }
       }
+
     if (dsc.keypadFireAlarm  ) {
         dsc.keypadFireAlarm = false;
+        //partitionMsgChangeCallback("Keypad Fire Alarm",defaultPartition);
       }
 
       if (dsc.keypadPanicAlarm  ) {
         dsc.keypadPanicAlarm = false;
-      }   
+        //partitionMsgChangeCallback("Keypad Panic Alarm",defaultPartition);
+      }
+      
+     
       // Publishes trouble status
       if (dsc.troubleChanged || forceRefresh ) {
         dsc.troubleChanged = false; // Resets the trouble status flag
         if (dsc.trouble) {
             panelStatusChangeCallback(trStatus, true, 0); // Trouble alarm tripped
+
             if ( troubleFetch && !dsc.disabled[defaultPartition-1] && !partitionStatus[defaultPartition-1].locked) {
+               // partitionStatus[defaultPartition-1].keyPressTime = millis();
+               // dsc.write("*21#7##", defaultPartition); //fetch panel troubles /zone module low battery  
             }          
+         
         } else {
             panelStatusChangeCallback(trStatus, false, 0); // Trouble alarm restored
-            if (!dsc.disabled[defaultPartition-1] && !partitionStatus[defaultPartition-1].locked && troubleFetch) { 
+            if (!dsc.disabled[defaultPartition-1] && !partitionStatus[defaultPartition-1].locked && troubleFetch) {
+               // partitionStatus[defaultPartition-1].keyPressTime = millis();
+                //dsc.write("*21#7##", defaultPartition); //fetch panel troubles /zone module low battery  
             }             
         }
+
       }
+
+      // Publishes status per partition
       for (byte partition = 0; partition < dscPartitions; partition++) {
         if (dsc.disabled[partition])
             partitionStatus[partition].disabled=true;
          else
-             partitionStatus[partition].disabled=false; 
+             partitionStatus[partition].disabled=false;
+         
         if (dsc.disabled[partition] || partitionStatus[partition].locked) continue;
+
          if (lastStatus[partition] != dsc.status[partition]  ) {
 				lastStatus[partition]=dsc.status[partition];
 				char msg[50];
 				sprintf(msg,PSTR("%02X: %s"), dsc.status[partition], String(statusText(dsc.status[partition])).c_str());
 				partitionMsgChangeCallback(msg,partition+1);
-        } 
+
+        }
+        
+
         // Publishes alarm status
         if (dsc.alarmChanged[partition] || forceRefresh) {
           dsc.alarmChanged[partition] = false; // Resets the partition alarm status flag
@@ -1231,9 +1460,11 @@ private:
           } else
               partitionStatus[partition].alarm=false;
         }
+
         // Publishes armed/disarmed status
         if (dsc.armedChanged[partition] || forceRefresh ) {
           dsc.armedChanged[partition] = false; // Resets the partition armed status flag
+
           if (dsc.armed[partition] && !dsc.alarm[partition]) {
             clearZoneAlarms(partition + 1);
             panelStatusChangeCallback(armStatus, true, partition + 1);
@@ -1262,6 +1493,7 @@ private:
             if (!forceRefresh) {
                 clearZoneBypass(partition + 1);
             } 
+         
               panelStatusChangeCallback(armStatus, false, partition + 1);
               partitionStatus[partition].armed=false;               
               partitionStatus[partition].armedStay=false;   
@@ -1275,6 +1507,7 @@ private:
         if (dsc.exitDelayChanged[partition] || forceRefresh) {
           dsc.exitDelayChanged[partition] = false; // Resets the exit delay status flag
           if (dsc.exitDelay[partition]) {
+       
               partitionStatus[partition].armed=false;              
               partitionStatusChangeCallback( String(FPSTR(STATUS_PENDING)).c_str(), partition + 1);
               partitionStatus[partition].exitdelay=true;   
@@ -1284,6 +1517,9 @@ private:
           } else
               partitionStatus[partition].exitdelay=false;
         } 
+
+        // Publishes ready status
+
     if (dsc.readyChanged[partition]  || forceRefresh) {
           dsc.readyChanged[partition] = false; // Resets the partition alarm status flag
           if (dsc.ready[partition]  && !dsc.exitDelay[partition]) {
@@ -1304,7 +1540,9 @@ private:
             panelStatusChangeCallback(rdyStatus, false, partition + 1);
             partitionStatus[partition].ready=false;                
           }
+
         }
+
         // Publishes fire alarm status
         if (dsc.fireChanged[partition] || forceRefresh) {
           dsc.fireChanged[partition] = false; // Resets the fire status flag
@@ -1317,9 +1555,20 @@ private:
           }
         }
         if (forceRefresh) {
-          panelStatusChangeCallback(chimeStatus, partitionStatus[partition].chime,partition+1);  
+          panelStatusChangeCallback(chimeStatus, partitionStatus[partition].chime,partition+1);
+          
         }
+
       }
+
+      // Publishes zones 1-64 status in a separate topic per zone
+      // Zone status is stored in the openZones[] and openZonesChanged[] arrays using 1 bit per zone, up to 64 zones:
+      //   openZones[0] and openZonesChanged[0]: Bit 0 = Zone 1 ... Bit 7 = Zone 8
+      //   openZones[1] and openZonesChanged[1]: Bit 0 = Zone 9 ... Bit 7 = Zone 16
+      //   ...
+      //   openZones[7] and openZonesChanged[7]: Bit 0 = Zone 57 ... Bit 7 = Zone 64
+      
+   
       if (dsc.openZonesStatusChanged || forceRefresh) {
         for (byte zoneGroup = 0; zoneGroup < dscZones; zoneGroup++) {
           for (byte zoneBit = 0; zoneBit < 8; zoneBit++) {
@@ -1342,12 +1591,17 @@ private:
       std::string zoneStatusMsg;
       zoneStatusMsg = "";
       char s1[7];
-      for (int x = 0; x < maxZones; x++) {          
+      for (int x = 0; x < maxZones; x++) {
+
+        //if (!zoneStatus[x].enabled) continue;   
+        
+          
         if (zoneStatus[x].open) {
           sprintf(s1, PSTR("OP:%d"), x + 1);
           if (zoneStatusMsg != "") zoneStatusMsg.append(",");
           zoneStatusMsg.append(s1);
         }
+
         if (zoneStatus[x].alarm) {
           sprintf(s1, PSTR("AL:%d"), x + 1);
           if (zoneStatusMsg != "") zoneStatusMsg.append(",");
@@ -1358,30 +1612,37 @@ private:
           if (zoneStatusMsg != "") zoneStatusMsg.append(",");
           zoneStatusMsg.append(s1);
         }
+
         if (zoneStatus[x].tamper) {
           sprintf(s1, PSTR("TA:%d"), x + 1);
           if (zoneStatusMsg != "") zoneStatusMsg.append(",");
           zoneStatusMsg.append(s1);
         }
+
         if (zoneStatus[x].batteryLow) {
           sprintf(s1, PSTR("BL:%d"), x + 1);
           if (zoneStatusMsg != "") zoneStatusMsg.append(",");
           zoneStatusMsg.append(s1);
         }
       }
-      if (zoneStatusMsg != previousZoneStatusMsg || forceRefresh){
+      //if (zoneStatusMsg == "")
+        //zoneStatusMsg = "Pending";
+
+      if (zoneStatusMsg != previousZoneStatusMsg || forceRefresh)
         zoneMsgStatusCallback(zoneStatusMsg);
-    }
-        previousZoneStatusMsg = zoneStatusMsg;
-        
-        std::string system0Msg="";
-        std::string system1Msg="";  
-        
-     if (system0Changed || system1Changed || forceRefresh) {    
+
+      previousZoneStatusMsg = zoneStatusMsg;
+
+       std::string system0Msg="";
+       std::string system1Msg="";  
+       
+     if (system0Changed || system1Changed || forceRefresh) {
+           
        if (system1Changed) 
            previousSystem1=system1;   
        else
            system1=previousSystem1;
+       
       if (bitRead(system1, 0)) {
         system1Msg.append(String(PSTR("BAT ")).c_str());
         if (system1Changed) {
@@ -1393,7 +1654,8 @@ private:
             dsc.batteryTrouble=false;    
             panelStatusChangeCallback(batStatus, false, 0);
           }
-      }  
+      }
+      
       if (bitRead(system1, 1)) {
         system1Msg.append(String(PSTR("BELL ")).c_str());
       }
@@ -1408,11 +1670,21 @@ private:
       }
       if (bitRead(system1, 5)) {
         system1Msg.append(String(PSTR("RF ")).c_str());
-      }  
+      }
+      /*
+      if (bitRead(system1, 6)) {
+        system1Msg.append(String(PSTR("B4 ")).c_str());
+      }
+      if (bitRead(system1, 7)) {
+        system1Msg.append(String(PSTR("A4 ")).c_str());
+      }
+*/
+      
       if (system0Changed) 
           previousSystem0=system0;
         else
           system0=previousSystem0;
+      
       if (bitRead(system0, 1)) {
         system0Msg.append(String(PSTR("AC ")).c_str());
       }
@@ -1438,7 +1710,9 @@ private:
      }
      system0Changed=false;
      system1Changed=false;
+
     }
+
     if (!forceDisconnect && dsc.handleModule() && dsc.moduleCmd) {
       if (dsc.panelData[0] == 0x41) {
         for (byte zoneByte = 0; zoneByte < 4; zoneByte++) {
@@ -1455,13 +1729,29 @@ private:
           }
         }
       }
+
       if (debug > 1)
         printPacket("Moduledata:", dsc.moduleCmd, dsc.moduleData, 16);
+
+      #ifdef DEBUGCOMMANDS
+      if (debug > 2) {
+        Serial.print("[MODULE] ");
+        Serial.print(dsc.panelData[0], HEX);
+        Serial.print(": ");
+        dsc.printModuleBinary(); // Optionally prints without spaces: printKeybusBinary(false);
+        Serial.print(" ");
+        dsc.printModuleMessage(); // Prints the decoded message
+        Serial.println();
+      }
+      #endif
+
     }
     forceRefresh=false;
     firstrun = false;
+
   }
   
+
   void setStatus(byte partition, bool force = false, bool skip = false) {
 
     if (dsc.status[partition] == partitionStatus[partition].lastStatus && beeps == 0 && !force) return;
@@ -1473,62 +1763,65 @@ private:
     partitionStatus[partition].digits = 0;
     partitionStatus[partition].hex = false;
     partitionStatus[partition].decimalInput = false;
-
+#if !defined(ARDUINO_MQTT) 
     if (debug > 1)     
+    ESP_LOGI("info", "status %02X, last status %02X,line2status %02X,selection %02X,partition=%d,skip=%d,force=%d", dsc.status[partition], partitionStatus[partition].lastStatus, line2Status, * currentSelection, partition + 1, skip,force);
+   #else
+         if (debug > 1)     
     Serial.printf("status %02X, last status %02X,line2status %02X,selection %02X,partition=%d,skip=%d,force=%d\n", dsc.status[partition], partitionStatus[partition].lastStatus, line2Status, * currentSelection, partition + 1, skip,force);  
-  
+#endif    
     switch (dsc.status[partition]) {
     case 0x01:
-      lcdLine1 = F("Partition gatava");
+      lcdLine1 = F("Partition ready");
       lcdLine2 = F(" ");
       break;
     case 0x02:
-      lcdLine1 = F("Mājās         ");
-      lcdLine2 = F("zona atvērta      ");
+      lcdLine1 = F("Stay         ");
+      lcdLine2 = F("zones open      ");
       break;
     case 0x03:
-      lcdLine1 = F("Zonas atvērtas  <>");
+      lcdLine1 = F("Zones open  <>");
       lcdLine2 = F(" ");
       break;
     case 0x04:
-      lcdLine1 = F("Ieslēgts:       ");
-      lcdLine2 = F("Mājās            ");
+      lcdLine1 = F("Armed:       ");
+      lcdLine2 = F("Stay            ");
       break;
     case 0x05:
-      lcdLine1 = F("Ieslēgts:       ");
-      lcdLine2 = F("Prom           ");
+      lcdLine1 = F("Armed:       ");
+      lcdLine2 = F("Away            ");
       break;
     case 0x06:
-      lcdLine1 = F("Ieslēgts: Mājas  ");
-      lcdLine2 = F("Nav ieejas kavēšanās  ");
+      lcdLine1 = F("Armed: Stay  ");
+      lcdLine2 = F("No entry delay  ");
       break;
     case 0x07:
       lcdLine1 = F("Failed       ");
       lcdLine2 = F("to arm          ");
       break;
     case 0x08:
-      lcdLine1 = F("Izejas aizkave   ");
-      lcdLine2 = F("procesā     ");
+      lcdLine1 = F("Exit delay   ");
+      lcdLine2 = F("in progress     ");
       break;
     case 0x09:
-      lcdLine1 = F("Ieslēdzos:      ");
-      lcdLine2 = F("Nav ieejas kavēšanās  ");
+      lcdLine1 = F("Arming:      ");
+      lcdLine2 = F("No entry delay  ");
       break;
     case 0x0B:
-      lcdLine1 = F("Ātra izeja   ");
-      lcdLine2 = F("procesā     ");
+      lcdLine1 = F("Quick exit   ");
+      lcdLine2 = F("in progress     ");
       break;
     case 0x0C:
-      lcdLine1 = F("Ieejas kavēšanās  ");
-      lcdLine2 = F("procesā     ");
+      lcdLine1 = F("Entry delay  ");
+      lcdLine2 = F("in progress     ");
       break;
     case 0x0D:
-      lcdLine1 = F("Ieejas kavēšanās  ");
-      lcdLine2 = F("pēc trauksmes     ");
+      lcdLine1 = F("Entry delay  ");
+      lcdLine2 = F("after alarm     ");
       break;
     case 0x0E:
-      lcdLine1 = F("Nav         ");
-      lcdLine2 = F("pieejams      ");
+      lcdLine1 = F("Not          ");
+      lcdLine2 = F("available       ");
       break;
     case 0x10:
       lcdLine1 = F("Keypad       ");
@@ -1551,7 +1844,7 @@ private:
       lcdLine2 = F("bypass zones    ");
       break;
     case 0x16:
-      lcdLine1 = F("Ieslēgts Away  ");
+      lcdLine1 = F("Armed: Away  ");
       lcdLine2 = F("No entry delay  ");
       break;
     case 0x17:
@@ -1559,7 +1852,7 @@ private:
       lcdLine2 = F("Keypad blanked  ");
       break;
     case 0x19:
-      lcdLine1 = F("Trauksme       ");
+      lcdLine1 = F("Alarm        ");
       lcdLine2 = F("occurred        ");
       break;
     case 0x22:
@@ -1575,11 +1868,11 @@ private:
       lcdLine2 = F("output active   ");
       break;
     case 0x3D:
-      lcdLine1 = F("Trauksme       ");
+      lcdLine1 = F("Alarm        ");
       lcdLine2 = F("occurred        ");
       break;
     case 0x3E:
-      lcdLine1 = F("Izslegts     ");
+      lcdLine1 = F("Disarmed     ");
       lcdLine2 = F(" ");
       
       break;
@@ -1592,11 +1885,11 @@ private:
       lcdLine2 = F("         ");
       break;      
     case 0x8A:
-      lcdLine1 = F("Aktīvs     ");
+      lcdLine1 = F("Activate     ");
       lcdLine2 = F("stay/away zones ");
       break;
     case 0x8B:
-      lcdLine1 = F("Atrā izeja   ");
+      lcdLine1 = F("Quick exit   ");
       lcdLine2 = F(" ");
       break;
     case 0x8E:
@@ -1628,14 +1921,14 @@ private:
       lcdLine2 = F(" ");
       break;
     case 0xA3:
-      lcdLine1 = F("Durvju        ");
-      lcdLine2 = F("zvaniņs ieslēgts   ");
+      lcdLine1 = F("Door         ");
+      lcdLine2 = F("chime enabled   ");
       partitionStatus[partition].chime=true;      
       panelStatusChangeCallback(chimeStatus, true, partition+1);       
       break;
     case 0xA4:
-      lcdLine1 = F("Durvju        ");
-      lcdLine2 = F("zvaniņs   izslēgts");
+      lcdLine1 = F("Door         ");
+      lcdLine2 = F("chime disabled  ");
       partitionStatus[partition].chime=false;        
       panelStatusChangeCallback(chimeStatus, false, partition+1);        
       break;
@@ -1646,6 +1939,7 @@ private:
     case 0xA6:
       lcdLine1 = F("*5:  Access Code");
       lcdLine2 = F("code? (2 digits)");
+      //digits = 2;
       break;
     case 0xA7:
       lcdLine1 = F("*5 Enter new ");
@@ -1858,10 +2152,14 @@ private:
       lcdLine2 = dsc.status[partition];
       partitionStatus[partition].digits = 0;
     }
+
+
     if (dsc.status[partition] != 0xA9) 
         partitionStatus[partition].eventViewer = false;
+
     if (partitionStatus[partition].digits == 0)
         partitionStatus[partition].newData = false;
+
     if (millis() - partitionStatus[partition].keyPressTime > 3000 && dsc.status[partition] > 0x8B) {
       if (!partitionStatus[partition].inprogram) {
         partitionStatus[partition].locked = true;
@@ -1869,6 +2167,7 @@ private:
         return;
       } else
         partitionStatus[partition].locked = false;
+
     } else if (dsc.status[partition] > 0x8B && !partitionStatus[partition].locked) {
       partitionStatus[partition].inprogram = true;
     }
@@ -1876,16 +2175,29 @@ private:
       partitionStatus[partition].locked = false;
       partitionStatus[partition].inprogram = false;
       activePartition = 1;
-    } 
+    }
+    
+
+
     if (!skip) {
+
+      // ESP_LOGI("test", "digits = %d,status=%02X,previoustatus=%02X,newdata=%d,locked=%d,partition=%d,selection=%d", partitionStatus[partition].digits, dsc.status[partition], partitionStatus[partition].lastStatus, partitionStatus[partition].newData, partitionStatus[partition].locked, partition + 1, *currentSelection);
+
+      //if multi digit field, setup for 6E request to panel
       if (dsc.status[partition] != partitionStatus[partition].lastStatus && !partitionStatus[partition].locked && partitionStatus[partition].digits && !partitionStatus[partition].newData) {
+
+        // ESP_LOGI("test", "in setlcd: digits = %d,status=%02X,previoustatus=%02X,newdata=%d,locked=%d", partitionStatus[partition].digits, dsc.status[partition], partitionStatus[partition].lastStatus, partitionStatus[partition].newData, partitionStatus[partition].locked);
+
         dsc.setLCDReceive(partitionStatus[partition].digits, partition + 1);
         partitionStatus[partition].editIdx = 0;
         partitionStatus[partition].hexMode = false;
         partitionStatus[partition].newData = true;
         lcdLine1 = F("");
         lcdLine2 = F("");
+
+        //ok, we should have the data now so display it
       } else if (partitionStatus[partition].digits && partitionStatus[partition].newData && dsc.pgmBuffer.dataPending) {
+
         char s[8];
         if (partitionStatus[partition].digits > 16)
         lcdLine1 =" ";
@@ -1893,12 +2205,14 @@ private:
         int y;
         char c;
         if (partitionStatus[partition].hexMode) lcdLine1 = F("*");
+
         if (partitionStatus[partition].decimalInput) {
           if (partitionStatus[partition].digits == 2)
             sprintf(decimalInputBuffer, PSTR("%2d"), dsc.pgmBuffer.data[0]);
           else
             sprintf(decimalInputBuffer, PSTR("%03d"), dsc.pgmBuffer.data[0]);
         }
+   
         for (int x = 0; x < partitionStatus[partition].digits ; x++) { 
           y = (x / 2)  + (x/8); //skip every 5th byte since it's a checksum
           if (partitionStatus[partition].decimalInput)
@@ -1906,6 +2220,7 @@ private:
           else
             c = x % 2 ? dsc.pgmBuffer.data[y] & 0x0F : (dsc.pgmBuffer.data[y] & 0xF0) >> 4;
           String tpl = F("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
           if (dsc.status[partition] == 0xAA) {
             tpl = F("XXXX    XXXXXX  XXXXXXXXXXXXXXXX");
           }
@@ -1918,7 +2233,8 @@ private:
             else
               sprintf(s, PSTR("%1X"), c);
           } else
-            sprintf(s, " "); 
+            sprintf(s, " ");
+           
           if (partitionStatus[partition].digits < 17)
              lcdLine2+=s;
           else {
@@ -1928,10 +2244,12 @@ private:
                lcdLine2+=s;
           }
         }
+
       } else if (partitionStatus[partition].digits) {
         lcdLine1 = "";
         lcdLine2 = "";
       }
+
       if (dsc.status[partition] < 0x04) {
         if ( * currentSelection > 1 && * currentSelection < 6) {
           std::string s = String(FPSTR(statusMenu[ * currentSelection])).c_str();
@@ -1946,15 +2264,17 @@ private:
           lcdLine2 = (s.substr(pos + 1)).c_str();
           * currentSelection = 1;
         }
+
         if (partitionStatus[partition].selectedZone && partitionStatus[partition].selectedZone < maxZones) {
           char s[50];
           std::string name=getZoneName(partitionStatus[partition].selectedZone);
           if (name !="")
             snprintf(s, 50,PSTR("%s <>"),name.c_str());
           else
-            snprintf(s,50, PSTR("zona %02d  <>"), partitionStatus[partition].selectedZone);
+            snprintf(s,50, PSTR("zone %02d  <>"), partitionStatus[partition].selectedZone);
           lcdLine2 = s;
         }
+
       } else if (dsc.status[partition] == 0xA0) { //bypass
         if ( * currentSelection == 0xFF || * currentSelection == 0 || dsc.status[partition] != partitionStatus[partition].lastStatus)
           *
@@ -1974,6 +2294,7 @@ private:
           lcdLine2 = s;
         }
       } else if (dsc.status[partition] == 0x11) { //alarms
+
         if ( * currentSelection == 0xFF || * currentSelection == 0 || dsc.status[partition] != partitionStatus[partition].lastStatus)
           *
           currentSelection = getNextAlarmedZone(0xFF, partition + 1);
@@ -1983,50 +2304,65 @@ private:
           if (name !="")
             snprintf(s, 50,PSTR("%s <>"),name.c_str());
           else
-          snprintf(s,50, PSTR("zona %02d"), * currentSelection);          
+          snprintf(s,50, PSTR("zone %02d"), * currentSelection);          
           lcdLine2 = s;
         } else lcdLine2 = " ";
       } else if (dsc.status[partition] == 0xA2) { //alarm memory
+
         if ( * currentSelection == 0xFF || dsc.status[partition] != partitionStatus[partition].lastStatus)
           *
           currentSelection = getNextOption(0xFF);
+
         if ( * currentSelection < maxZones && * currentSelection > 0) {
           char s[16];
           lcdLine2 = "";
-          sprintf(s, PSTR("zona %02d"), * currentSelection);
+
+          sprintf(s, PSTR("zone %02d"), * currentSelection);
           lcdLine2 = s;
         } else {
-          lcdLine1 = F("Nav trauksmes signālu");
-          lcdLine2 = F("atmiņā");
+          lcdLine1 = F("No alarms");
+          lcdLine2 = F("in memory");
         }
       } else if (dsc.status[partition] == 0x9E) { // main menu
+
         if ( * currentSelection == 0xFF || dsc.status[partition] != partitionStatus[partition].lastStatus) {
           * currentSelection = 1;
         }
         lcdLine2 = String(FPSTR(mainMenu[ * currentSelection]));
+
       } else if (dsc.status[partition] == 0xB2) { // output menu
+
         if ( * currentSelection == 0xFF || dsc.status[partition] != partitionStatus[partition].lastStatus) {
           * currentSelection = 1;
         }
         lcdLine2 = String(FPSTR(outputMenu[ * currentSelection]));
+
       } else if (dsc.status[partition] == 0xA9 && !partitionStatus[partition].eventViewer) { // user menu
+
         if ( * currentSelection == 0xFF || dsc.status[partition] != partitionStatus[partition].lastStatus) {
           * currentSelection = 1;
         }
         lcdLine2 = String(FPSTR(userMenu[ * currentSelection]));
+
       } else if (dsc.status[partition] == 0xA1) { //trouble
+
         if ( * currentSelection == 0xFF) {
           * currentSelection = getNextOption(0xFF);
         }
         if ( * currentSelection < 9) {
           lcdLine2 = String(FPSTR(troubleMenu[ * currentSelection]));
+
         }
+
       } else if (dsc.status[partition] == 0xC8) { //service
+
         if ( * currentSelection == 0xFF)
           * currentSelection = getNextOption(0xFF);
         if ( * currentSelection < 9) {
           lcdLine2 = String(FPSTR(serviceMenu[ * currentSelection]));
+
         }
+
       } else if (dsc.status[partition] == 0xA6) { //user code
         if ( * currentSelection == 0xFF)
           * currentSelection = getNextUserCode(0xFF);
@@ -2042,16 +2378,23 @@ private:
         if (dsc.status[partition] == 0x9F && dsc.accessCodePrompt && isInt(accessCode, 10)) {
         dsc.accessCodePrompt = false;
         dsc.write(accessCode, partition + 1);
+        //if (debug > 0) ESP_LOGI("Debug", "got access code prompt for partition %d", partition + 1);
       }  
+
       if (options) {
         lcdLine2 = getOptionsString();
       }
+      
      }
+    
 
     if (lcdLine1 != "") line1DisplayCallback(lcdLine1.c_str(), partition + 1);
     if (lcdLine2 != "") line2DisplayCallback(lcdLine2.c_str(), partition + 1);
-    partitionStatus[partition].lastStatus = dsc.status[partition];  
+
+    partitionStatus[partition].lastStatus = dsc.status[partition];
+    
   }
+
 
   // Processes status data not natively handled within the library
   void processStatus() {
@@ -2073,14 +2416,18 @@ private:
       break;
     case 0x5D:
     case 0x63:
+
       if ((dsc.panelData[2] & 0x04) == 0x04) { // Alarm memory zones 1-32
         processProgramZones(3,0);
       }
       break;
+
     case 0xA5:
+
       processEventBufferAA(true);
       break;
     case 0xAA:
+
       processEventBufferAA();
       break;
     case 0x6E:
@@ -2092,6 +2439,7 @@ private:
       break;
     case 0x75: //tones 1
     case 0x7D:
+      //ESP_LOGI("info", "Sent tones cmd %02X,%02X", dsc.panelData[0], dsc.panelData[3]);
       break; //tones 2
     case 0x87: //relay cmd
       processRelayCmd();
@@ -2101,6 +2449,7 @@ private:
       getEnabledZonesB1(6, 1, 2);
       break;
     case 0xE6:
+
       switch (dsc.panelData[2]) {
       case 0x01:
         if (!(dsc.panelData[9] & 0x80))
@@ -2125,6 +2474,7 @@ private:
         processProgramZones(5,4);
         break; // Programming zone lights 33-64 //bypass?
       case 0x18:
+        //ESP_LOGI("info", "zone lights 33");
         if ((dsc.panelData[4] & 0x04) == 0x04)
           processProgramZones(5,4);
         break; // Alarm memory zones 33-64
@@ -2135,8 +2485,10 @@ private:
         getEnabledZonesE6(4, 33, dsc.panelData[3]);
         break;
       };
+
       break;
     case 0xEB:
+
       if (dsc.panelData[7] == 1)
         switch (dsc.panelData[8]) {
         case 0xAE:
@@ -2155,14 +2507,26 @@ private:
    }
 
   void printPanelTone(byte panelByte) {
+
     if (dsc.panelData[panelByte] == 0) {
+      //stream->print(F("none"));
+
       return;
     }
+
     if ((dsc.panelData[panelByte] & 0x80) == 0x80) {
+      //stream->print(F("constant tone "));
+
     }
+
     if ((dsc.panelData[panelByte] & 0x70) != 0) {
+      // stream->print((panelData[panelByte] & 0x70) >> 4);
+      //stream->print(F(" beep "));
     }
+
     if ((dsc.panelData[panelByte] & 0x0F) != 0) {
+      //  stream->print(panelData[panelByte] & 0x0F);
+      //  stream->print(F("s interval"));
     }
   }
 
@@ -2183,6 +2547,7 @@ private:
     }
     beepTime = millis();
   }
+
 
   void printPanel_0x6E() {
     if (dsc.pgmBuffer.partition) {
@@ -2209,6 +2574,7 @@ private:
     byte pgm = 2;
     for (byte relayByte = 2; relayByte < 4; relayByte++) {
       for (byte x = 0; x < 8; x++) {
+
         if (relayByte == 3) {
           if (x < 2)
             pgm = 0;
@@ -2216,6 +2582,7 @@ private:
             continue;
           else if (x > 3)
             pgm = 6;
+
         }
         rchan = pgm + x;
         if (bitRead(dsc.panelData[relayByte], x)) {
@@ -2228,10 +2595,15 @@ private:
         previousRelayStatus[rchan] = relayStatus[rchan];
       }
     }
+
   }
 
   void processProgramZones(byte startByte,byte zoneStart) {
     byte byteCount = 0;
+    byte zone;
+  //  std::string group1msg,group2msg;
+    
+
     for (byte zoneGroup = zoneStart; zoneGroup < zoneStart + 4; zoneGroup++) {
       programZones[zoneGroup] = dsc.panelData[startByte + byteCount];
       byteCount++;
@@ -2242,6 +2614,7 @@ private:
             programZones[x] = 0;
         }  
     }    
+
     if (options)
       dsc.statusChanged = true;
   }
@@ -2270,6 +2643,7 @@ private:
     byte dscDay = dscDay1 | dscDay2;
     byte dscHour = dsc.panelData[2 + 2] & 0x1F;
     byte dscMinute = dsc.panelData[2 + 3] >> 2;
+
     if (dscYear3 >= 7) strcat_P(eventInfo, PSTR("19"));
     else strcat_P(eventInfo, PSTR("20"));
     itoa(dscYear3, charBuffer, 10);
@@ -2292,7 +2666,9 @@ private:
     if (dscMinute < 10) strcat(eventInfo, "0");
     itoa(dscMinute, charBuffer, 10);
     strcat(eventInfo, charBuffer);
+    
      if (dsc.panelData[6] == 0 && dsc.panelData[7] == 0) {
+      //timestamp
       return;
     }   
 
@@ -2306,6 +2682,7 @@ private:
       eventStatusMsg = eventInfo;
     else
       line1DisplayCallback(eventInfo, activePartition);
+
     switch (dsc.panelData[5] & 0x03) {
     case 0x00:
       printPanelStatus0(6, activePartition, showEvent);
@@ -2376,8 +2753,10 @@ private:
     if (dscMinute < 10) strcat(eventInfo, "0");
     itoa(dscMinute, charBuffer, 10);
     strcat(eventInfo, charBuffer);
+
     if (dsc.panelData[2] != 0) {
       strcat_P(eventInfo, PSTR(" P:"));
+
       byte bitCount = 0;
       for (byte bit = 0; bit <= 7; bit++) {
         if (bitRead(dsc.panelData[2], bit)) {
@@ -2388,10 +2767,12 @@ private:
       strcat(eventInfo, charBuffer);
     }
     strcat_P(eventInfo, PSTR(" "));
+
     if (showEvent)
       eventStatusMsg = eventInfo;
     else
       line1DisplayCallback(eventInfo, activePartition);
+
     switch (dsc.panelData[7]) {
     case 0x00:
       printPanelStatus0(8, activePartition, showEvent);
@@ -2436,6 +2817,7 @@ private:
 
   void printPanelStatus0(byte panelByte, byte partition, bool showEvent = false) {
     bool decoded = true;
+
      String lcdLine1;
      String lcdLine2;
     switch (dsc.panelData[panelByte]) {
@@ -2490,11 +2872,14 @@ private:
     case 0x55:
       lcdLine1 = F("Aux input");
       lcdLine2 = F("alarm rest");
-      break;      
+      break;
+      // 0x56 - 0x75: Zone tamper, zones 1-32
+      // 0x76 - 0x95: Zone tamper restored, zones 1-32      
     case 0x98:
       lcdLine1 = F("Keypad");
       lcdLine2 = F("lockout");
-      break;     
+      break;
+      // 0x99 - 0xBD: Armed: Access codes 1-34, 40-42      
     case 0xBE:
       lcdLine1 = F("Armed:");
       lcdLine2 = F("Partial");
@@ -2502,7 +2887,8 @@ private:
     case 0xBF:
       lcdLine1 = F("Armed:");
       lcdLine2 = F("Special");
-      break;   
+      break;
+      // 0xC0 - 0xE4: Disarmed: Access codes 1-34, 40-42      
     case 0xE5:
       lcdLine1 = F("Auto-arm");
       lcdLine2 = F("canc");
@@ -2590,10 +2976,12 @@ private:
     default:
       decoded = false;
     }
+
     char lcdMessage[20];
     char charBuffer[4];
+
     if (dsc.panelData[panelByte] >= 0x09 && dsc.panelData[panelByte] <= 0x28) {
-      strcpy_P(lcdMessage,PSTR("Zonas trauksme:"));
+      strcpy_P(lcdMessage,PSTR("Zone alarm:"));
       byte zone = dsc.panelData[panelByte] - 8;
       if (zone > 0 && zone < maxZones)
         zoneStatus[zone - 1].alarm = true;
@@ -2605,9 +2993,11 @@ private:
     }
 
     if (dsc.panelData[panelByte] >= 0x29 && dsc.panelData[panelByte] <= 0x48) {
-      lcdLine1 = F("Zonas trauksme");
-      strcpy_P(lcdMessage, PSTR(" atjaunota:"));
-      byte zone = dsc.panelData[panelByte] - 40; 
+      lcdLine1 = F("Zone alarm");
+      strcpy_P(lcdMessage, PSTR(" restored:"));
+      byte zone = dsc.panelData[panelByte] - 40;
+       //if (zone > 0 && zone < maxZones) 
+         //zoneStatus[zone-1].alarm=false;      
       itoa(zone, charBuffer, 10);
       strcat(lcdMessage, charBuffer);
       lcdLine2 = lcdMessage;
@@ -2618,7 +3008,7 @@ private:
       strcpy_P(lcdMessage, PSTR("Zone tamper:"));
       byte zone = dsc.panelData[panelByte] - 0x55;
       if (zone > 0 && zone < maxZones)
-      zoneStatus[zone - 1].tamper = true;
+        zoneStatus[zone - 1].tamper = true;
       itoa(zone, charBuffer, 10);
       strcat(lcdMessage, charBuffer);
       lcdLine1 = lcdMessage;
@@ -2628,7 +3018,7 @@ private:
 
     if (dsc.panelData[panelByte] >= 0x76 && dsc.panelData[panelByte] <= 0x95) {
       lcdLine1 = F("Zone tamper");
-      strcpy_P(lcdMessage, PSTR(" atjaunota: "));
+      strcpy_P(lcdMessage, PSTR(" restored: "));
       byte zone = dsc.panelData[panelByte] - 0x75;
       if (zone > 0 && zone < maxZones)
         zoneStatus[zone - 1].tamper = false;
@@ -2645,7 +3035,7 @@ private:
       if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master code:"));
       else strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
-      std::string  c=getUserName(charBuffer);
+     std::string  c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
@@ -2658,19 +3048,22 @@ private:
       if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master code:"));
       else strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
-      std::string c=getUserName(charBuffer);
+     std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data0");
       lcdLine2 = " ";
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1 + " " + lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus1(byte panelByte, byte partition, bool showEvent = false) {
@@ -2689,7 +3082,8 @@ private:
     case 0x05:
       lcdLine1 = F("Late to close");
       lcdLine2 = F(" ");
-      break;  
+      break;
+      // 0x24 - 0x28: Access codes 33-34, 40-42      
     case 0x29:
       lcdLine1 = F("Download");
       lcdLine2 = F("forced ans");
@@ -2698,6 +3092,10 @@ private:
       lcdLine1 = F("Armed:");
       lcdLine2 = F("Auto-arm");
       break;
+      // 0x2C - 0x4B: Zone battery restored, zones 1-32
+      // 0x4C - 0x6B: Zone battery low, zones 1-32
+      // 0x6C - 0x8B: Zone fault restored, zones 1-32
+      // 0x8C - 0xAB: Zone fault, zones 1-32      
     case 0xAC:
       lcdLine1 = F("Exit inst");
       lcdLine2 = F("prog");
@@ -2713,7 +3111,8 @@ private:
     case 0xAF:
       lcdLine1 = F("Walk test");
       lcdLine2 = F("begin");
-      break; 
+      break;
+      // 0xB0 - 0xCF: Zones bypassed, zones 1-32      
     case 0xD0:
       lcdLine1 = F("Command");
       lcdLine2 = F("output 4");
@@ -2739,8 +3138,8 @@ private:
     if (dsc.panelData[panelByte] >= 0x24 && dsc.panelData[panelByte] <= 0x28) {
       byte dscCode = dsc.panelData[panelByte] - 0x03;
       if (dscCode >= 35) dscCode += 5;
-      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master kods:"));
-      else strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master code:"));
+      else strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
@@ -2748,6 +3147,7 @@ private:
       lcdLine2 = F(" ");
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x2C && dsc.panelData[panelByte] <= 0x4B) {
       lcdLine1 = F("Zone bat");
       strcpy_P(lcdMessage, PSTR("rest:"));
@@ -2769,8 +3169,9 @@ private:
       decoded = true;
       dsc.statusChanged = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x6C && dsc.panelData[panelByte] <= 0x8B) {
-      lcdLine1 = F("Zonas kļuda");
+      lcdLine1 = F("Zone fault");
       strcpy_P(lcdMessage, PSTR("rest:"));
       // zoneStatus[dsc.panelData[panelByte] - 106].open=false;
       itoa(dsc.panelData[panelByte] - 107, charBuffer, 10);
@@ -2779,8 +3180,9 @@ private:
       decoded = true;
       dsc.statusChanged = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x8C && dsc.panelData[panelByte] <= 0xAB) {
-      strcpy_P(lcdMessage, PSTR("Zonas kļuda:"));
+      strcpy_P(lcdMessage, PSTR("Zone fault:"));
       itoa(dsc.panelData[panelByte] - 139, charBuffer, 10);
       //zoneStatus[dsc.panelData[panelByte] - 138].open=true;
       strcat(lcdMessage, charBuffer);
@@ -2789,6 +3191,7 @@ private:
       decoded = true;
       dsc.statusChanged = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xB0 && dsc.panelData[panelByte] <= 0xCF) {
       strcpy_P(lcdMessage, PSTR("Zone bypass:"));
       itoa(dsc.panelData[panelByte] - 175, charBuffer, 10);
@@ -2799,14 +3202,17 @@ private:
       decoded = true;
       dsc.statusChanged = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data1");
       lcdLine2 = F(" ");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1 + " " + lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1+ " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus2(byte panelByte, byte partition, bool showEvent = false) {
@@ -2815,7 +3221,7 @@ private:
     String lcdLine2; 
     switch (dsc.panelData[panelByte]) {
     case 0x2A:
-      lcdLine1 = F("Ātra izeja");
+      lcdLine1 = F("Quick exit");
       lcdLine2 = F(" ");
       break;
     case 0x63:
@@ -2880,16 +3286,23 @@ private:
       break;
     case 0x9A:
       lcdLine1 = F("Armed:");
-      lcdLine2 = F("Mājas");
+      lcdLine2 = F("Stay");
       break;
     case 0x9B:
       lcdLine1 = F("Armed:");
-      lcdLine2 = F("Prom");
+      lcdLine2 = F("Away");
       break;
     case 0x9C:
       lcdLine1 = F("Armed:");
       lcdLine2 = F("No ent del");
-      break; 
+      break;
+      // 0x9E - 0xC2: *1: Access codes 1-34, 40-42
+      // 0xC3 - 0xC5: *5: Access codes 40-42
+      // 0xC6 - 0xE5: Access codes 1-34, 40-42
+      // 0xE6 - 0xE8: *6: Access codes 40-42
+      // 0xE9 - 0xF0: Keypad restored: Slots 1-8
+      // 0xF1 - 0xF8: Keypad trouble: Slots 1-8
+      // 0xF9 - 0xFE: Zone expander restored: 1-6      
     case 0xFF:
       lcdLine1 = F("Zone exp");
       lcdLine2 = F("trble:1");
@@ -2913,31 +3326,33 @@ private:
       byte dscCode = dsc.panelData[panelByte] - 0x9D;
       lcdLine1 = F("*1: ");
       if (dscCode >= 35) dscCode += 5;
-      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master kods:"));
-      else strcpy_P(lcdMessage,  PSTR("Piekļuves kods:"));
+      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master code:"));
+      else strcpy_P(lcdMessage,  PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xC3 && dsc.panelData[panelByte] <= 0xC5) {
       byte dscCode = dsc.panelData[panelByte] - 0xA0;
       lcdLine1 = F("*5: ");
       if (dscCode >= 35) dscCode += 5;
-      if (dscCode == 40) strcpy_P(lcdMessage,  PSTR("Master kods:"));
-      else strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      if (dscCode == 40) strcpy_P(lcdMessage,  PSTR("Master code:"));
+      else strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xC6 && dsc.panelData[panelByte] <= 0xE5) {
       byte dscCode = dsc.panelData[panelByte] - 0xC5;
       if (dscCode >= 35) dscCode += 5;
-      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master kods:"));
-      else strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master code:"));
+      else strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
       std::string  c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
@@ -2945,18 +3360,20 @@ private:
       lcdLine2 = F(" ");
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xE6 && dsc.panelData[panelByte] <= 0xE8) {
       byte dscCode = dsc.panelData[panelByte] - 0xC3;
       lcdLine1 = F("");
       if (dscCode >= 35) dscCode += 5;
-      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master kods:"));
-      else strcpy_P(lcdMessage,  PSTR("Piekļuves kods:"));
+      if (dscCode == 40) strcpy_P(lcdMessage, PSTR("Master code:"));
+      else strcpy_P(lcdMessage,  PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xE9 && dsc.panelData[panelByte] <= 0xF0) {
       lcdLine1 = F("Keypad rest");
       strcpy_P(lcdMessage,  PSTR(" slot:"));
@@ -2965,6 +3382,7 @@ private:
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xF1 && dsc.panelData[panelByte] <= 0xF8) {
       lcdLine1 = F("Keypad trble ");
       strcpy_P(lcdMessage, PSTR("slot: "));
@@ -2973,6 +3391,7 @@ private:
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xF9 && dsc.panelData[panelByte] <= 0xFE) {
       strcpy_P(lcdMessage,PSTR("Zone exp:"));
       itoa(dsc.panelData[panelByte] - 248, charBuffer, 10);
@@ -2981,10 +3400,12 @@ private:
       lcdLine2 = F(" rest");
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data2");
       lcdLine2 = " ";
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+" " +lcdLine2).c_str());
     else
@@ -3020,6 +3441,10 @@ private:
       lcdLine1 = F("Zone exp 7");
       lcdLine2 = F("trble");
       break;
+      // 0x25 - 0x2C: Keypad tamper restored, slots 1-8
+      // 0x2D - 0x34: Keypad tamper, slots 1-8
+      // 0x35 - 0x3A: Module tamper restored, slots 9-14
+      // 0x3B - 0x40: Module tamper, slots 9-14      
     case 0x41:
       lcdLine1 = F("PC/RF5132:");
       lcdLine2 = F("Tamper rest");
@@ -3104,13 +3529,14 @@ private:
       decoded = true;
     }
     if (dsc.panelData[panelByte] >= 0x2D && dsc.panelData[panelByte] <= 0x34) {
-      strcpy_P(lcdMessage, PSTR("klaviatūra"));
+      strcpy_P(lcdMessage, PSTR("keypad "));
       itoa(dsc.panelData[panelByte] - 0x2c, charBuffer, 10);
       strcat(lcdMessage, charBuffer);
       lcdLine1 = lcdMessage;
       lcdLine2 = F("tamper");
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x35 && dsc.panelData[panelByte] <= 0x3A) {
       strcpy_P(lcdMessage, PSTR("Zone expander "));
       itoa(dsc.panelData[panelByte] - 52, charBuffer, 10);
@@ -3119,6 +3545,7 @@ private:
       lcdLine2 = F("tamper rest");
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x3B && dsc.panelData[panelByte] <= 0x40) {
       strcpy_P(lcdMessage, PSTR("Zone expander "));
       itoa(dsc.panelData[panelByte] - 58, charBuffer, 10);
@@ -3127,14 +3554,17 @@ private:
       lcdLine2 = F("tamper");
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data3");
       lcdLine2 = F(" ");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus4(byte panelByte, byte partition, bool showEvent = false) {
@@ -3162,7 +3592,7 @@ private:
     char charBuffer[4];
 
     if (dsc.panelData[panelByte] <= 0x1F) {
-      strcpy_P(lcdMessage, PSTR("Zonas trauksme: "));
+      strcpy_P(lcdMessage, PSTR("Zone alarm: "));
       byte zone = dsc.panelData[panelByte] + 33;
       if (zone > 0 && zone < maxZones)
         zoneStatus[zone - 1].alarm = true;
@@ -3172,9 +3602,11 @@ private:
       lcdLine2 = F(" ");
       decoded = true;
     } else if (dsc.panelData[panelByte] >= 0x20 && dsc.panelData[panelByte] <= 0x3F) {
-      lcdLine1 = F("Zonas trauksme");
+      lcdLine1 = F("Zone alarm");
       strcpy_P(lcdMessage, PSTR(" rest: "));
-      byte zone = dsc.panelData[panelByte] + 1; 
+      byte zone = dsc.panelData[panelByte] + 1;
+      //   if (zone > 0 && zone < maxZones) 
+      //    zoneStatus[zone-1].alarm=false;      
       itoa(zone, charBuffer, 10);
       strcat(lcdMessage, charBuffer);
       lcdLine2 = lcdMessage;
@@ -3183,7 +3615,7 @@ private:
       strcpy_P(lcdMessage, PSTR("Zone tamper:"));
       byte zone = dsc.panelData[panelByte] - 31;
       if (zone > 0 && zone < maxZones)
-      zoneStatus[zone - 1].tamper = true;
+        zoneStatus[zone - 1].tamper = true;
       itoa(zone, charBuffer, 10);
       strcat(lcdMessage, charBuffer);
       lcdLine1 = lcdMessage;
@@ -3200,14 +3632,17 @@ private:
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data4");
       lcdLine2 = F(" ");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus5(byte panelByte, byte partition, bool showEvent = false) {
@@ -3221,32 +3656,36 @@ private:
       byte dscCode = dsc.panelData[panelByte] + 0x23;
       lcdLine1 = F("Armed:");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x3A && dsc.panelData[panelByte] <= 0x73) {
       byte dscCode = dsc.panelData[panelByte] - 0x17;
-      lcdLine1 = F("Atbruņots:");
+      lcdLine1 = F("Disarmed:");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data5");
       lcdLine2 = F(" ");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus14(byte panelByte, byte partition, bool showEvent = false) {
@@ -3273,14 +3712,17 @@ private:
     default:
       decoded = false;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data14");
       lcdLine2 = F(" ");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus16(byte panelByte, byte partition, bool showEvent = false) {
@@ -3290,7 +3732,7 @@ private:
 
     switch (dsc.panelData[panelByte]) {
     case 0x80:
-      lcdLine1 = F("Problēma");
+      lcdLine1 = F("Trouble");
       lcdLine2 = F("ack");
       break;
     case 0x81:
@@ -3304,18 +3746,23 @@ private:
     default:
       decoded = false;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data16");
       lcdLine2 = F("");
     }
+
 if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus17(byte panelByte, byte partition, bool showEvent = false) {
     bool decoded = true;
+    //std::string lcdLine1;
+    //std::string lcdLine2;
      String lcdLine1;
      String lcdLine2;
     char lcdMessage[20];
@@ -3325,7 +3772,7 @@ if (showEvent)
       byte dscCode = dsc.panelData[panelByte] - 0x27;
       lcdLine1 = F("*1: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
@@ -3337,68 +3784,73 @@ if (showEvent)
       byte dscCode = dsc.panelData[panelByte] + 1;
       lcdLine1 = F("*2: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x84 && dsc.panelData[panelByte] <= 0xBD) {
       byte dscCode = dsc.panelData[panelByte] - 0x61;
       lcdLine1 = F("*2: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x25 && dsc.panelData[panelByte] <= 0x49) {
       byte dscCode = dsc.panelData[panelByte] - 0x24;
       lcdLine1 = F("*3: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
       std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0xBE && dsc.panelData[panelByte] <= 0xF7) {
       byte dscCode = dsc.panelData[panelByte] - 0x9B;
       lcdLine1 = F("*3: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data17");
       lcdLine2 = F("");
     }
+
 if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus18(byte panelByte, byte partition, bool showEvent = false) {
-
     bool decoded = true;
+
     char lcdMessage[20];
     char charBuffer[4];
      String lcdLine1;
      String lcdLine2;
-
     if (dsc.panelData[panelByte] <= 0x39) {
       byte dscCode = dsc.panelData[panelByte] + 0x23;
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
      std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
@@ -3406,36 +3858,41 @@ if (showEvent)
       lcdLine2 = " ";
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x3A && dsc.panelData[panelByte] <= 0x95) {
       byte dscCode = dsc.panelData[panelByte] - 0x39;
       lcdLine1 = F("*5: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
       std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (dsc.panelData[panelByte] >= 0x96 && dsc.panelData[panelByte] <= 0xF1) {
       byte dscCode = dsc.panelData[panelByte] - 0x95;
       lcdLine1 = F("*6: ");
       if (dscCode >= 40) dscCode += 3;
-      strcpy_P(lcdMessage, PSTR("Piekļuves kods:"));
+      strcpy_P(lcdMessage, PSTR("Access code:"));
       itoa(dscCode, charBuffer, 10);
       std::string c=getUserName(charBuffer);
       strcat(lcdMessage, c.c_str());
       lcdLine2 = lcdMessage;
       decoded = true;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data18");
       lcdLine2 = F("");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
       line2DisplayCallback((lcdLine1 + " " +lcdLine2).c_str(), partition);
+
   }
 
   void printPanelStatus1B(byte panelByte, byte partition, bool showEvent = false) {
@@ -3444,16 +3901,18 @@ if (showEvent)
      String lcdLine2;
     switch (dsc.panelData[panelByte]) {
     case 0xF1:
-      lcdLine1 = F("Sistēmas restarts ");
+      lcdLine1 = F("System reset ");
       lcdLine2 = F("trans");
       break;
     default:
       decoded = false;
     }
+
     if (!decoded) {
       lcdLine1 = F("Unknown data1b");
       lcdLine2 = F("");
     }
+
     if (showEvent)
       eventStatusMsg.append((lcdLine1+ " " +lcdLine2).c_str());
     else
@@ -3463,78 +3922,78 @@ if (showEvent)
   const __FlashStringHelper *statusText(uint8_t statusCode)
   {
     switch (statusCode) {
-        case 0x01: return F("Gatavs");
-        case 0x02: return F("Zonas atvērtas");
-        case 0x03: return F("Atvērta zona");
-        case 0x04: return F("Armed mājas");
-        case 0x05: return F("Armed prom");
-        case 0x06: return F("Nav ieejas kavēšanās");
-        case 0x07: return F("Neizdevās arm");
-        case 0x08: return F("Izejas aizkave");
-        case 0x09: return F("Nav ieejas kavēšanās");
-        case 0x0B: return F("Atrā izeja");
-        case 0x0C: return F("Ieejas kavēšanās");
-        case 0x0D: return F("Trauksmes atmiņa");
-        case 0x10: return F("Tastatūras bloķēšana");
-        case 0x11: return F("Trauksme");
-        case 0x14: return F("Automātiskā aktivizēšana");
-        case 0x15: return F("Arm ar apvedceļu");
-        case 0x16: return F("Nav ieejas kavēšanās");
-        case 0x17: return F("Strāvas pārtraukums");//??? not sure
-        case 0x22: return F("Trauksmes atmiņa");
-        case 0x33: return F("Aizņemts");
-        case 0x3D: return F("Atbruņots");
-        case 0x3E: return F("Atbruņots");
-        case 0x40: return F("Tastatūra ir notīrīta");
-        case 0x8A: return F("Aktivizēt zonas");
-        case 0x8B: return F("Ātra izeja");
-        case 0x8E: return F("Nederīga opcija");
-        case 0x8F: return F("Nederīgs kods");
-        case 0x9E: return F("Ievadiet * kodu");
-        case 0x9F: return F("Piekļuves kods");
-        case 0xA0: return F("Zonu apvedceļš");
-        case 0xA1: return F("Problēmu izvēlne");
-        case 0xA2: return F("Trauksmes atmiņa");
-        case 0xA3: return F("Durvju zvans ieslēgts");
-        case 0xA4: return F("Atslēgts durvju zvans");
-        case 0xA5: return F("Master kods");
-        case 0xA6: return F("Piekkļuves kods");
-        case 0xA7: return F("Ievadi jaunu kodu");
-        case 0xA9: return F("Lietotāja funkcija");
-        case 0xAA: return F("Datums un laiks");
-        case 0xAB: return F("Automātiskās aktivizēšanas laiks");
-        case 0xAC: return F("Automātiskā aktivizēšana ieslēgta");
-        case 0xAD: return F("Automātiskā aktivizēšana izslēgta");
-        case 0xAF: return F("Sistēmas tests");
-        case 0xB0: return F("Iespējot DLS");
-        case 0xB2: return F("Komandu izvade");
-        case 0xB7: return F("Instalētāja kods");
-        case 0xB8: return F("Ievadi * kodu");
+        case 0x01: return F("Ready");
+        case 0x02: return F("Stay zones open");
+        case 0x03: return F("Zones open");
+        case 0x04: return F("Armed stay");
+        case 0x05: return F("Armed away");
+        case 0x06: return F("No entry delay");
+        case 0x07: return F("Failed to arm");
+        case 0x08: return F("Exit delay");
+        case 0x09: return F("No entry delay");
+        case 0x0B: return F("Quick exit");
+        case 0x0C: return F("Entry delay");
+        case 0x0D: return F("Alarm memory");
+        case 0x10: return F("Keypad lockout");
+        case 0x11: return F("Alarm");
+        case 0x14: return F("Auto-arm");
+        case 0x15: return F("Arm with bypass");
+        case 0x16: return F("No entry delay");
+        case 0x17: return F("Power failure");//??? not sure
+        case 0x22: return F("Alarm memory");
+        case 0x33: return F("Busy");
+        case 0x3D: return F("Disarmed");
+        case 0x3E: return F("Disarmed");
+        case 0x40: return F("Keypad blanked");
+        case 0x8A: return F("Activate zones");
+        case 0x8B: return F("Quick exit");
+        case 0x8E: return F("Invalid option");
+        case 0x8F: return F("Invalid code");
+        case 0x9E: return F("Enter * code");
+        case 0x9F: return F("Access code");
+        case 0xA0: return F("Zone bypass");
+        case 0xA1: return F("Trouble menu");
+        case 0xA2: return F("Alarm memory");
+        case 0xA3: return F("Door chime on");
+        case 0xA4: return F("Door chime off");
+        case 0xA5: return F("Master code");
+        case 0xA6: return F("Access codes");
+        case 0xA7: return F("Enter new code");
+        case 0xA9: return F("User function");
+        case 0xAA: return F("Time and Date");
+        case 0xAB: return F("Auto-arm time");
+        case 0xAC: return F("Auto-arm on");
+        case 0xAD: return F("Auto-arm off");
+        case 0xAF: return F("System test");
+        case 0xB0: return F("Enable DLS");
+        case 0xB2: return F("Command output");
+        case 0xB7: return F("Installer code");
+        case 0xB8: return F("Enter * code");
         case 0xB9: return F("Zone tamper");
         case 0xBA: return F("Zones low batt.");
-        case 0xC6: return F("Zonas kļūdu izvēlne");
-        case 0xC8: return F("Nepieciešams serviss");
+        case 0xC6: return F("Zone fault menu");
+        case 0xC8: return F("Service required");
         case 0xD0: return F("Keypads low batt");
         case 0xD1: return F("Wireless low bat");
-        case 0xE4: return F("Instalēšanas izvēlne");
-        case 0xE5: return F("Tastatūras slots");
-        case 0xE6: return F("Ievade: 2 cipari");
-        case 0xE7: return F("Ievade: 3 cipari");
-        case 0xE8: return F("Ievade: 4 cipari");
-        case 0xEA: return F("Kods: 2 cipari");
-        case 0xEB: return F("Kods: 4 cipari");
-        case 0xEC: return F("Ievade: 6 cipari");
-        case 0xED: return F("Ievade: 32 cipari");
-        case 0xEE: return F("Ievade: opcija");
-        case 0xF0: return F("Funkcijas taustiņš 1");
-        case 0xF1: return F("Funkcijas taustiņš 2");
-        case 0xF2: return F("Funkcijas taustiņš 3");
-        case 0xF3: return F("Funkcijas taustiņš 4");
-        case 0xF4: return F("Funkcijas taustiņš 5");
-        case 0xF8: return F("Tastatūras programma");
-        case 0xFF: return F("Izslēgts");
-        default: return F("Nezināms");
+        case 0xE4: return F("Installer menu");
+        case 0xE5: return F("Keypad slot");
+        case 0xE6: return F("Input: 2 digits");
+        case 0xE7: return F("Input: 3 digits");
+        case 0xE8: return F("Input: 4 digits");
+        case 0xEA: return F("Code: 2 digits");
+        case 0xEB: return F("Code: 4 digits");
+        case 0xEC: return F("Input: 6 digits");
+        case 0xED: return F("Input: 32 digits");
+        case 0xEE: return F("Input: option");
+        case 0xF0: return F("Function key 1");
+        case 0xF1: return F("Function key 2");
+        case 0xF2: return F("Function key 3");
+        case 0xF3: return F("Function key 4");
+        case 0xF4: return F("Function key 5");
+        case 0xF8: return F("Keypad program");
+        case 0xFF: return F("Disabled");
+        default: return F("Unknown");
     }
   }  
 };
-#endif 
+#endif

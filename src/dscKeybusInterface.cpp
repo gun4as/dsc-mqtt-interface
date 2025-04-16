@@ -1,6 +1,39 @@
+/*
+    DSC Keybus Interface
+
+    https://github.com/taligentx/dscKeybusInterface
+
+    This library is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
 
 #include "dscKeybus.h"
 
+
+#if defined(ESP32)
+portMUX_TYPE dscKeybusInterface::timer1Mux = portMUX_INITIALIZER_UNLOCKED;
+
+#if ESP_IDF_VERSION_MAJOR < 444
+hw_timer_t * dscKeybusInterface::timer1 = NULL;
+
+#else // ESP-IDF 4+
+esp_timer_handle_t timer0;
+const esp_timer_create_args_t timer0Parameters = {
+  .callback =  & dscKeybusInterface::dscDataInterrupt
+};
+
+#endif // ESP_IDF_VERSION_MAJOR
+#endif // ESP32
 
 byte dscKeybusInterface::dscClockPin = 0;
 byte dscKeybusInterface::dscReadPin = 0;
@@ -99,11 +132,23 @@ void dscKeybusInterface::begin(Stream & _stream,byte setClockPin, byte setReadPi
   // Platform-specific timers trigger a read of the data line 250us after the Keybus clock changes
 
   // Arduino/AVR Timer1 calls ISR(TIMER1_OVF_vect) from dscClockInterrupt() and is disabled in the ISR for a one-shot timer
+  #if defined(ESP8266)
   timer1_isr_init();
   timer1_attachInterrupt(dscDataInterrupt);
   timer1_enable(TIM_DIV16, TIM_EDGE, TIM_SINGLE);
 
-
+  // esp32 timer1 calls dscDataInterrupt() from dscClockInterrupt()
+  #elif defined(ESP32)
+  #if ESP_IDF_VERSION_MAJOR < 444
+  timer1 = timerBegin(1, 80, true);
+  timerStop(timer1);
+  timerAttachInterrupt(timer1, & dscDataInterrupt, true);
+  timerAlarmWrite(timer1, 250, true);
+  timerAlarmEnable(timer1);
+  #else // IDF4+
+  esp_timer_create( & timer0Parameters, & timer0);
+  #endif // ESP_IDF_VERSION_MAJOR
+  #endif // ESP32
   // Generates an interrupt when the Keybus clock rises or falls - requires a hardware interrupt pin on Arduino/AVR
   attachInterrupt(digitalPinToInterrupt(dscClockPin), dscClockInterrupt, CHANGE);
 #if not defined(DISABLE_EXPANDER)  
@@ -121,8 +166,22 @@ void dscKeybusInterface::begin(Stream & _stream,byte setClockPin, byte setReadPi
 void dscKeybusInterface::stop() {
 
   // Disables Arduino/AVR Timer1 interrupts
+  #if defined(ESP8266)
   timer1_disable();
   timer1_detachInterrupt();
+
+  // Disables esp32 timer0
+  #elif defined(ESP32)
+  #if ESP_IDF_VERSION_MAJOR < 444
+  if (timer1 != NULL)  {  
+    timerAlarmDisable(timer1);
+    timerEnd(timer1);
+  }
+  #else // ESP-IDF 4+
+  esp_timer_stop(timer0);
+  #endif // ESP_IDF_VERSION_MAJOR
+  #endif // ESP32
+
   // Disables the Keybus clock pin interrupt
   detachInterrupt(digitalPinToInterrupt(dscClockPin));
 
@@ -138,16 +197,26 @@ void dscKeybusInterface::stop() {
 }
 
 bool dscKeybusInterface::loop() {
+
+  #if defined(ESP8266) || defined(ESP32)
   yield();
+  #endif
 
   // Checks if Keybus data is detected and sets a status flag if data is not detected for 3s
-
+  #if defined(ESP32)
+  portENTER_CRITICAL( & timer1Mux);
+  #else
   noInterrupts();
+  #endif
 
   if (millis() - keybusTime > 3000) keybusConnected = false; // keybusTime is set in dscDataInterrupt() when the clock resets
   else keybusConnected = true;
 
+  #if defined(ESP32)
+  portEXIT_CRITICAL( & timer1Mux);
+  #else
   interrupts();
+  #endif
 
   if (previousKeybus != keybusConnected) {
     previousKeybus = keybusConnected;
@@ -168,14 +237,23 @@ bool dscKeybusInterface::loop() {
   panelByteCount = panelBufferByteCount[dataIndex];
   panelBufferIndex++;
 
+  // Resets counters when the buffer is cleared
+  #if defined(ESP32)
+  portENTER_CRITICAL( & timer1Mux);
+  #else
   noInterrupts();
+  #endif
 
   if (panelBufferIndex > panelBufferLength) {
     panelBufferIndex = 1;
     panelBufferLength = 0;
   }
 
+  #if defined(ESP32)
+  portEXIT_CRITICAL( & timer1Mux);
+  #else
   interrupts();
+  #endif
 
   // Waits at startup for the 0x05 status command or a command with valid CRC data to eliminate spurious data.
   static bool startupCycle = true;
@@ -485,11 +563,24 @@ dscKeybusInterface::dscClockInterrupt() {
   // 250us to read the data line.
 
   // AVR Timer1 calls dscDataInterrupt() via ISR(TIMER1_OVF_vect) when the Timer1 counter overflows
-
+  #if defined(ESP8266)
   timer1_write(1250);
+
+  // esp32 timer1 calls dscDataInterrupt() in 250us
+  #elif defined(ESP32)
+  #if ESP_IDF_VERSION_MAJOR < 444
+  timerStart(timer1);
+  #else // IDF4+
+  esp_timer_start_once(timer0, 250);
+  #endif
+  portENTER_CRITICAL( & timer1Mux);
+  #endif
 
   static unsigned long previousClockHighTime;
   static bool skipData = false;
+  #ifdef DEBOUNCE
+  static bool skipFirst = false;
+  #endif  
 
   // Panel sends data while the clock is high
   if (digitalRead(dscClockPin) == HIGH) {
@@ -519,10 +610,23 @@ dscKeybusInterface::dscClockInterrupt() {
      }
       if (pcmd!=NULL) {
         if (redundantPanelData(pcmd, isrPanelData, isrPanelByteCount)) {
-        
+#ifdef DEBOUNCE            
+          if (skipFirst) 
+            skipFirst = false;
+           else 
+#endif              
               skipData = true;
         } 
-         
+#ifdef DEBOUNCE        
+       else { // we skip the first cmd to remove spurious invalid ones during a changeover. Reported on a pc5005
+          skipData = true;
+          skipFirst = true;
+        }  
+#endif        
+       } else {
+#ifdef DEBOUNCE              
+          skipFirst = false;
+#endif          
        }
       }
       // Stores new panel data in the panel buffer
@@ -589,6 +693,9 @@ dscKeybusInterface::dscClockInterrupt() {
       }
     }
   }
+  #if defined(ESP32)
+  portEXIT_CRITICAL( & timer1Mux);
+  #endif
 }
 
 // Interrupt function called by AVR Timer1, esp8266 timer1, and esp32 timer1 after 250us to read the data line
@@ -598,6 +705,14 @@ dscKeybusInterface::dscDataInterrupt() {
     #else
   dscKeybusInterface::dscDataInterrupt( void* arg) {      
     #endif
+  #if defined(ESP32)
+  #if ESP_IDF_VERSION_MAJOR < 444
+  timerStop(timer1);
+  #else // IDF 4+
+  esp_timer_stop(timer0);
+  #endif
+  portENTER_CRITICAL( & timer1Mux);
+  #endif
 
   // Panel sends data while the clock is high
   if (digitalRead(dscClockPin) == HIGH) {
@@ -665,6 +780,10 @@ dscKeybusInterface::dscDataInterrupt() {
       }
     }
   }
+  #if defined(ESP32)
+  portEXIT_CRITICAL( & timer1Mux);
+  #endif
+
 }
 
 void

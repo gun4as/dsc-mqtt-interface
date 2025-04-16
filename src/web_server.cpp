@@ -1,6 +1,13 @@
 #include <Arduino.h>
+#ifdef ESP32
+#include <WiFi.h>
+#include <mDNS.h>
+#include <AsyncTCP.h>
+#else
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
+#endif
+
 #include <ESPAsyncWebServer.h>
 #include <LittleFS.h>
 #include <ArduinoJson.h>

@@ -15,7 +15,7 @@ bool setupMqtt() {
   }
 
 void mqttCallback(char * topic, byte * payload, unsigned int length) {
-    payload[length] = '\0';
+   // payload[length] = '\0';
     StaticJsonDocument < 256 > doc;
     deserializeJson(doc, payload);
     int p = defaultPartition;
@@ -43,24 +43,34 @@ void mqttCallback(char * topic, byte * payload, unsigned int length) {
       }
     }
   }
-void mqttHandle() {
-
-    if (!mqtt.connected()) {
-      unsigned long mqttCurrentTime = millis();
-      if (mqttCurrentTime - mqttPreviousTime > 5000) {
-        mqttPreviousTime = mqttCurrentTime;
+  void mqttHandle() {
+    static unsigned long mqttPreviousTime = 0;
   
+    if (WiFi.status() != WL_CONNECTED) {
+      // Ja WiFi nav, nav jēgas mēģināt MQTT
+      return;
+    }
+  
+    if (!mqtt.connected()) {
+      unsigned long now = millis();
+      if (now - mqttPreviousTime > 5000 || mqttPreviousTime == 0) {
+        mqttPreviousTime = now;
+  
+        Serial.print(F("Attempting MQTT connection... "));
         if (mqttConnect()) {
-          Serial.println(F("MQTT disconnected, successfully reconnected."));
-          mqttPreviousTime = 0;
+          Serial.println(F("Success!"));
+          mqttPreviousTime = 0; // reset timer pēc veiksmīga savienojuma
         } else {
-          Serial.println(F("MQTT disconnected, failed to reconnect."));
-          Serial.print(F("Status code ="));
-          Serial.print(mqtt.state());
+          Serial.println(F("Failed."));
+          Serial.print(F("Status code = "));
+          Serial.println(mqtt.state());
         }
       }
-    } else mqtt.loop();
+    } else {
+      mqtt.loop();
+    }
   }
+  
 
   bool mqttConnect() {
     Serial.print(F("MQTT...."));

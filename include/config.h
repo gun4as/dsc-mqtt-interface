@@ -27,4 +27,9 @@ extern const int dscWritePinDefault;
 extern const int maxZonesDefault;
 extern const int maxRelays;
 
+#define useTIME //comment this if you don't need/want to set your panel time from NTP
+#define ARDUINO_MQTT
+#define DEBUG 1
+
+
 #endif

@@ -1,5 +1,12 @@
 #include "wifi_utils.h"
+
+#ifdef ESP32
+#include <WiFi.h>
+#include <mDNS.h>
+#else
 #include <ESP8266WiFi.h>
+#include <ESP8266mDNS.h>
+#endif
 #include <WiFiManager.h> // https://github.com/tzapu/WiFiManager
 #include "config.h"
 #include "led_utils.h"

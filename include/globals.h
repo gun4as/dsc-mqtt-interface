@@ -2,8 +2,12 @@
 #define globals_h
 #include "dscAlarm.h"  // vai kur definēta DSCkeybushome klase
 #include <PubSubClient.h>
+#ifdef ESP32
+#include <WiFi.h>
+#include <mDNS.h>
+#else
 #include <ESP8266WiFi.h>
-
+#endif
 
 // MQTT Topics (Constants)
 extern const char * mqttClientName;
