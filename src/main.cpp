@@ -1,75 +1,89 @@
 
 #include "Arduino.h"
+#include "config.h"
+
 #ifdef ESP32
-#include <WiFi.h>
-#include <mDNS.h>
+  #ifdef ETHERNET
+    #include <SPI.h>
+    #include <Ethernet.h>
+    #include <AsyncTCP.h> 
+
+  #else
+    #include <WiFi.h>
+    #include <mDNS.h>
+    #include "wifi_utils.h"
+  #endif
 #else
-#include <ESP8266WiFi.h>
-#include <ESP8266mDNS.h>
+  // ESP8266 vienmēr izmanto WiFi
+  #include <ESP8266WiFi.h>
+  #include <ESP8266mDNS.h>
+  #include "wifi_utils.h"
 #endif
+
 #include <string>
 #include <PubSubClient.h>
-#include <WiFiUdp.h>
 #include <ArduinoJson.h>
 #include "dscAlarm.h"
 #include "mqtt_utils.h"
-#include "config.h"
 #include "globals.h"
-#include "wifi_utils.h"
 #include "dsc_utils.h"
 #include "mqtt_config.h"
 #include <LittleFS.h>
 #include "web_server.h"
 #include "led_utils.h"
 
-#if defined(useTIME)
-#include <time.h>
-#endif
 
 unsigned long lastReconnectAttempt = 0;
 const unsigned long reconnectInterval = 10000;
 int wifiReconnectAttempts = 0;
 const int maxReconnectAttempts = 10;
 
-WiFiClient wifiClient;
-PubSubClient mqtt(mqttServer, mqttPort, wifiClient);
+
 unsigned long mqttPreviousTime;
 DSCkeybushome *DSCkeybus = nullptr;
-
-#if defined(useTIME)
-const long  timeZoneOffset = -5 * 3600;  // Offset from UTC in seconds (example: US Eastern is UTC - 5)
-const int   daylightOffset = 1 * 3600;   // Daylight savings time offset in seconds
-const char* ntpServer = "pool.ntp.org";  // Set the NTP server
-#endif
-
-#if defined(useTIME)
-tm timeClient;
-#endif
 
 void setup() {
   Serial.setDebugOutput(true);
   Serial.begin(115200);
   Serial.println(); 
 
- 
   LittleFS.begin();
+
+#ifdef ETHERNET 
+  Serial.println(F("Disabling WiFi (ESP32)..."));
+  
+  // 1. Standarta WiFi atslēgšana
+  WiFi.disconnect(true, true);
+  WiFi.mode(WIFI_OFF);
+  delay(500);
+
+  Serial.println(F("Initializing Ethernet (W5500)..."));
+  Ethernet.init(5);
+  byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+  if (Ethernet.begin(mac) == 0) {
+    Serial.println(F("Failed to configure Ethernet using DHCP"));
+    // TODO: fallback uz static IP
+  } else {
+    Serial.print(F("Ethernet IP address: "));
+    Serial.println(Ethernet.localIP());
+   
+  };
+#else
   connectToWiFi();
+#endif
+
   setupMqtt();
-  #if defined(useTIME)
-  configTime(timeZoneOffset, daylightOffset, ntpServer);
-  while (!getLocalTime( & timeClient)) {
-    Serial.print(".");
-    delay(2000);
-  }
-  #endif
+
   setupDSC();
   Serial.println(F("DSC Interface is online."));
-  setupWebServer();
-  setLedStatus(LED_OK);
+
+  //setupWebServer();
+ // setLedStatus(LED_OK);
 }
 
+
 void loop() {
-  updateLed();
+ // updateLed();
   DSCkeybus->loop();
 
   static bool delayedStartup = true;
@@ -79,16 +93,22 @@ void loop() {
     delayedStartup = false;
   }
 
-  // Reconnect tikai, ja nav already connecting!
+#ifdef ETHERNET
+  // Ethernet savienojuma pārbaude
+  if (Ethernet.linkStatus() == LinkOFF) {
+    Serial.println(F("Ethernet link is down."));
+    return;
+  }
+#else
+  // WiFi reconnect loģika
   wl_status_t wifiStatus = WiFi.status();
-
   if (wifiStatus != WL_CONNECTED && wifiStatus != WL_IDLE_STATUS) {
     if (millis() - lastReconnectAttempt > reconnectInterval) {
       Serial.println(F("WiFi disconnected. Reconnecting..."));
 
-      WiFi.disconnect(true);  // ar "true" notīra statusu
-      delay(100);             // dod nedaudz laika
-      WiFi.begin();           // mēģina no jauna
+      WiFi.disconnect(true);
+      delay(100);
+      WiFi.begin();
 
       lastReconnectAttempt = millis();
       wifiReconnectAttempts++;
@@ -100,8 +120,10 @@ void loop() {
     }
     return;
   } else {
-    wifiReconnectAttempts = 0;  // savienots veiksmīgi
+    wifiReconnectAttempts = 0;
   }
+#endif
 
-  mqttHandle();  // izsauc tikai ja WiFi OK
+  mqttHandle();  // darbojas gan ar WiFi, gan Ethernet
+ 
 }

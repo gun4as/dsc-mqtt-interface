@@ -1,6 +1,9 @@
 #ifndef config_h
 #define config_h
 
+#define ETHERNET  //ja gribi izmantot w5500 ethernet moduli nevis wifi
+#define ARDUINO_MQTT
+#define DEBUG 1
 
 extern const char * apSSID;
 extern const char * apPassword;
@@ -27,9 +30,7 @@ extern const int dscWritePinDefault;
 extern const int maxZonesDefault;
 extern const int maxRelays;
 
-#define useTIME //comment this if you don't need/want to set your panel time from NTP
-#define ARDUINO_MQTT
-#define DEBUG 1
+
 
 
 #endif

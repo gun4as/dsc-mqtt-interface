@@ -45,12 +45,18 @@ void mqttCallback(char * topic, byte * payload, unsigned int length) {
   }
   void mqttHandle() {
     static unsigned long mqttPreviousTime = 0;
+
+    #ifdef ETHERNET
+    bool isConnected = (Ethernet.linkStatus() == LinkON);
+    #else
+    bool isConnected = (WiFi.status() == WL_CONNECTED);
+    #endif
   
-    if (WiFi.status() != WL_CONNECTED) {
-      // Ja WiFi nav, nav jēgas mēģināt MQTT
+    if (!isConnected) {
+      // Nav savienojuma — atmetam MQTT apstrādi
       return;
     }
-  
+
     if (!mqtt.connected()) {
       unsigned long now = millis();
       if (now - mqttPreviousTime > 5000 || mqttPreviousTime == 0) {

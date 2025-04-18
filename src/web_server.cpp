@@ -1,14 +1,19 @@
 #include <Arduino.h>
+
 #ifdef ESP32
-#include <WiFi.h>
-#include <mDNS.h>
-#include <AsyncTCP.h>
+  #ifdef ETHERNET
+ 
+   #include <AsyncTCP.h>
+  #else
+   #include <WiFi.h>
+   #include <mDNS.h>
+ #endif   
 #else
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #endif
 
-#include <ESPAsyncWebServer.h>
+#include <AsyncWebServer_ESP32_W5500.h>
 #include <LittleFS.h>
 #include <ArduinoJson.h>
 #include "mqtt_config.h"

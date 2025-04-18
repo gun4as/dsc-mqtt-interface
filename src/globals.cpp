@@ -18,3 +18,15 @@ const char * mqttEventTopic = "DSC2/Get/Event";
 const char * mqttBirthMessage = "online";
 const char * mqttLwtMessage = "offline";
 const char * mqttCmdSubscribeTopic = "DSC2/Set";
+
+
+#ifdef ETHERNET
+  #include <SPI.h>
+  #include <Ethernet.h>
+  EthernetClient ethClient;
+  PubSubClient mqtt(mqttServer, mqttPort, ethClient);
+
+#else
+  WiFiClient wifiClient;
+  PubSubClient mqtt(mqttServer, mqttPort, wifiClient);
+#endif

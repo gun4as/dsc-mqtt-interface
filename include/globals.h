@@ -9,6 +9,15 @@
 #include <ESP8266WiFi.h>
 #endif
 
+#ifdef ETHERNET
+#include <Ethernet.h>
+#include <SPI.h>
+extern EthernetClient ethClient;
+#else
+extern WiFiClient wifiClient;
+#endif
+
+
 // MQTT Topics (Constants)
 extern const char * mqttClientName;
 extern const char * mqttZoneStatusTopic;
@@ -32,6 +41,5 @@ extern unsigned long mqttPreviousTime;
 
 extern DSCkeybushome *DSCkeybus;  // ← tikai deklarācija!
 extern PubSubClient mqtt; // ← tikai deklarācija!
-extern WiFiClient wifiClient;
 
 #endif
