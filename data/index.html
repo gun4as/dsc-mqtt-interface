@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSC Konfigurācija</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .static-ip { display: none; }
+    label { display: block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><span class="icon">⌨️</span> DSC Konfigurācija</h1>
+    <form id="configForm">
+      <label>MQTT Serveris</label>
+      <input type="text" name="mqttServer" required>
+
+      <label>MQTT Ports</label>
+      <input type="number" name="mqttPort" value="1883" required>
+
+      <label>MQTT Lietotājvārds</label>
+      <input type="text" name="mqttUsername">
+
+      <label>MQTT Parole</label>
+      <input type="password" name="mqttPassword">
+
+      <label>Piekļuves kods</label>
+      <input type="text" name="accessCode" required>
+
+      <label>Partition primārā</label>
+      <input type="number" name="defaultPartition" min="1" value="1">
+
+      <label>Partition</label>
+      <input type="number" name="partition" min="1" value="8">
+
+      <label>Zonas</label>
+      <input type="number" name="maxZonesDefault" min="1" value="64">
+
+      <label>PGM</label>
+      <input type="number" name="maxRelays" min="1" value="4">
+
+      <label>Atkļūdošana (Debug)</label>
+      <input type="number" name="Ddebug" min="0" value="1">
+
+      <label><input type="checkbox" name="useDHCP" /> Izmantot DHCP</label>
+
+      <div class="static-ip">
+        <label>Statiskā IP adrese</label>
+        <input type="text" name="staticIP" placeholder="192.168.0.100" />
+      </div>
+
+      <div class="static-ip">
+        <label>Vārteja (Gateway)</label>
+        <input type="text" name="gateway" placeholder="192.168.0.1" />
+      </div>
+
+      <div class="static-ip">
+        <label>Subnet maska</label>
+        <input type="text" name="subnet" placeholder="255.255.255.0" />
+      </div>
+
+      <div class="static-ip">
+        <label>DNS serveris</label>
+        <input type="text" name="dns" placeholder="8.8.8.8" />
+      </div>
+
+      <label>Lietotājvārds (Web Access)</label>
+      <input type="text" name="webUsername" placeholder="admin" required>
+
+      <label>Parole (Web Access)</label>
+      <input type="password" name="webPassword" placeholder="admin" required>
+
+      <div class="buttons">
+        <button type="submit">Saglabāt</button>
+        <button type="button" onclick="resetForm()">Notīrīt</button>
+      </div>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
