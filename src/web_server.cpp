@@ -86,6 +86,22 @@ void setupWebServer() {
       }
   });
 
+  server.on("/reset", HTTP_POST, [www_username, www_password](AsyncWebServerRequest *request){
+    if (!request->authenticate(www_username, www_password)) {
+      request->requestAuthentication();
+      return;
+    }
+  
+    if (LittleFS.exists("/config.json")) {
+      LittleFS.remove("/config.json");
+      Serial.println(F("[WEB] config.json dzēsts!"));
+    }
+  
+    request->send(200, "application/json", "{\"success\":true}");
+    delay(1000);
+    ESP.restart();  // 🔁 Restartē ierīci ar default config
+  });
+  
   server.onNotFound([](AsyncWebServerRequest *request) {
     request->send(LittleFS, "/index.html", "text/html");
   });

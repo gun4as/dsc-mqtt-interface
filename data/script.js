@@ -54,9 +54,26 @@ function toggleStaticIPFields() {
   });
 }
 
+
+function resetDevice() {
+  if (confirm("Vai tiešām vēlies dzēst visus iestatījumus un pārstartēt ierīci?")) {
+    fetch('/reset', {
+      method: 'POST',
+    }).then(res => {
+      if (res.ok) alert("Iestatījumi dzēsti. Ierīce tiek pārstartēta!");
+      else alert("Neizdevās veikt rūpnīcas atiestatīšanu.");
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const dhcpCheckbox = document.querySelector('[name="useDHCP"]');
   if (dhcpCheckbox) {
     dhcpCheckbox.addEventListener('change', toggleStaticIPFields);
   }
 });
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 7032f6afaf686928ec388389b8853e6042ff6f3a
