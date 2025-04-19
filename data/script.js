@@ -72,8 +72,5 @@ document.addEventListener('DOMContentLoaded', () => {
     dhcpCheckbox.addEventListener('change', toggleStaticIPFields);
   }
 });
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 7032f6afaf686928ec388389b8853e6042ff6f3a
