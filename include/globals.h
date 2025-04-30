@@ -16,12 +16,12 @@
 #define ETH_PARAM_PHY_POWER 16
 #define ETH_PARAM_PHY_MDC 23
 #define ETH_PARAM_PHY_MDIO 18
-#define ETH_PARAM_CLK_MODE ETH_CLOCK_GPIO0_OUT
+#define ETH_PARAM_CLK_MODE ETH_CLOCK_GPIO0_IN
 
 //DSC pini
 #define DSC_CLOCK_PIN 14
-#define DSC_READ_PIN  33
-#define DSC_WRITE_PIN 32
+#define DSC_READ_PIN  12
+#define DSC_WRITE_PIN 4
 
 extern AsyncWebServer server;
 extern bool eth_connected;
