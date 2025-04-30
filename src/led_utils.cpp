@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "led_utils.h"
 
-const int ledPin = LED_BUILTIN;
+const int ledPin = 15;
 LedStatus currentStatus = LED_OK;
 unsigned long previousMillis = 0;
 bool ledState = LOW;
